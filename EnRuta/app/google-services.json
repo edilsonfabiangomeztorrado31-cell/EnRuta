@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "261245204474",
+    "project_id": "enruta-de838",
+    "storage_bucket": "enruta-de838.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261245204474:android:bf79a6b72eb7893a4b1643",
+        "android_client_info": {
+          "package_name": "com.empresa.enruta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6lQC2JhiWqhOCvItUW5VcWNMjQ6B889Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

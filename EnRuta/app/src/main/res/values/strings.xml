@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">EnRuta</string>
+    <string name="contactanos"><u>Contáctanos</u></string>
+    <string name="recuperala">Recupérala <u>aquí</u></string>
 </resources>

@@ -1,16 +1,17 @@
 plugins {
     alias(libs.plugins.android.application)
     id("com.google.gms.google-services")
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 android {
     namespace = "com.empresa.enruta"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.empresa.enruta"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -49,4 +50,6 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.firebase:firebase-crashlytics")
+    implementation ("com.google.firebase:firebase-database:20.3.1")
+
 }
