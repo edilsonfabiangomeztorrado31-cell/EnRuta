@@ -1,5 +1,6 @@
 package com.empresa.enruta.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,8 +25,30 @@ public class RegisterEmpresaActivity extends AppCompatActivity implements Regist
 
         presenter = new RegisterEmpresaPresenter(this);
 
+        Button btnIniciarSesion = findViewById(R.id.btnIniciarSesionSwift);
+        Button btnRegistrarse = findViewById(R.id.btnRegistrarseSwift);
+
+        btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_naranja_left);
+        btnRegistrarse.setBackgroundResource(R.drawable.bg_button_azul_right);
+
+        btnIniciarSesion.setOnClickListener(v -> {
+            btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_azul_left);
+            btnRegistrarse.setBackgroundResource(R.drawable.bg_button_naranja_right);
+
+            Intent intent = new Intent(RegisterEmpresaActivity.this, LoginEmpresaActivity.class);
+            startActivity(intent);
+
+        });
+
+        btnRegistrarse.setOnClickListener(v -> {
+            btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_naranja_left);
+            btnRegistrarse.setBackgroundResource(R.drawable.bg_button_azul_right);
+
+            Intent intent = new Intent(RegisterEmpresaActivity.this, RegisterEmpresaActivity.class);
+        });
+
         etNombre = findViewById(R.id.etNombreEmpresa);
-        etNit = findViewById(R.id.etNI);
+        etNit = findViewById(R.id.etCorreo);
         etCorreo = findViewById(R.id.etCorreo);
         etRepresentante = findViewById(R.id.etRepresentanteLlegal);
         etTipoEmpresa = findViewById(R.id.etTipoEmpresa);

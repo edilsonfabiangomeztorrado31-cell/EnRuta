@@ -3,10 +3,10 @@ package com.empresa.enruta.contract;
 public interface LoginEmpresaContract {
     interface View {
         void mostrarError(String mensaje);
-        void navegaAInicio();
+        void navegaAInicio(String mensaje);
     }
 
     interface Presenter {
-        void login(String ni, String contraseña);
+        void login(String correo, String contraseña);
     }
 }

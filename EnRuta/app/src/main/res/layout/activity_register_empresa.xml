@@ -48,6 +48,16 @@
             android:padding="24dp"
             android:background="#FFFFFF">
 
+            <TextView
+                android:id="@+id/tvTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registro de Empresa"
+                android:textColor="@color/blue_logo"
+                android:textSize="24sp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:textStyle="bold"/>
             <!-- Botones de pestaña -->
             <FrameLayout
                 android:layout_width="match_parent"
@@ -61,24 +71,22 @@
                     android:gravity="center">
 
                     <Button
-                        android:id="@+id/btnIniciarSesion"
+                        android:id="@+id/btnIniciarSesionSwift"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Iniciar sesión"
                         android:backgroundTint="@null"
                         android:textColor="@color/white"
-                        android:background="@drawable/bg_button_azul"
                         app:backgroundTint="@null"
                         android:translationZ="8dp"
                         android:elevation="8dp"/>
 
                     <Button
-                        android:id="@+id/btnInterruptorRegistrarse"
+                        android:id="@+id/btnRegistrarseSwift"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/bg_button_naranja"
                         android:backgroundTint="@null"
                         android:text="Registrarse"
                         android:textColor="@color/white"
@@ -113,14 +121,14 @@
 
             <!-- Input contraseña -->
             <EditText
-                android:id="@+id/etNI"
+                android:id="@+id/etCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:hint="NI"
+                android:hint="NIT"
                 android:background="@android:color/transparent"
                 android:inputType="phone"
-                android:textColor="#000000"
+                android:textColor="@color/white_hueso"
                 android:paddingBottom="8dp"
                 android:layout_marginBottom="0dp"
                 android:drawablePadding="8dp"
@@ -139,7 +147,7 @@
                 android:hint="Correo"
                 android:background="@android:color/transparent"
                 android:inputType="text"
-                android:textColor="#000000"
+                android:textColor="@color/white_hueso"
                 android:paddingBottom="8dp"
                 android:layout_marginBottom="0dp"
                 android:drawablePadding="8dp"
@@ -158,7 +166,7 @@
                 android:hint="Representante legal"
                 android:background="@android:color/transparent"
                 android:inputType="text"
-                android:textColor="#000000"
+                android:textColor="@color/white_hueso"
                 android:paddingBottom="0dp"
                 android:layout_marginBottom="8dp"
                 android:drawablePadding="8dp"
@@ -177,7 +185,7 @@
                 android:hint="Tipo de empresa"
                 android:background="@android:color/transparent"
                 android:inputType="text"
-                android:textColor="#000000"
+                android:textColor="@color/white_hueso"
                 android:paddingBottom="0dp"
                 android:layout_marginBottom="8dp"
                 android:drawablePadding="8dp"
@@ -196,7 +204,7 @@
                 android:hint="Dirección"
                 android:background="@android:color/transparent"
                 android:inputType="text"
-                android:textColor="#000000"
+                android:textColor="@color/white_hueso"
                 android:paddingBottom="0dp"
                 android:layout_marginBottom="8dp"
                 android:drawablePadding="8dp"
@@ -215,7 +223,7 @@
                 android:hint="Contacto"
                 android:background="@android:color/transparent"
                 android:inputType="phone"
-                android:textColor="#000000"
+                android:textColor="@color/white_hueso"
                 android:paddingBottom="0dp"
                 android:layout_marginBottom="8dp"
                 android:drawablePadding="8dp"
@@ -234,8 +242,8 @@
                 android:layout_marginTop="16dp"
                 android:hint="Contraseña"
                 android:background="@android:color/transparent"
-                android:inputType="text"
-                android:textColor="#000000"
+                android:inputType="textPassword"
+                android:textColor="@color/white_hueso"
                 android:paddingBottom="0dp"
                 android:layout_marginBottom="8dp"
                 android:drawablePadding="8dp"
@@ -266,12 +274,12 @@
 
             <!-- Texto olvidaste contraseña -->
             <TextView
-                android:id="@+id/tvOlvidasteContraseña"
+                android:id="@+id/tvTienesCuenta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
-                android:text="¿Olvidaste tu contraseña?"
+                android:text="¿Ya tienes cuenta?"
                 android:textColor="@color/blue_logo"
                 android:textSize="15sp" />
             <TextView
@@ -279,11 +287,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
-                android:text="@string/recuperala"
+                android:text="@string/iniciaSeccion"
                 android:textColor="@color/blue_logo"
                 android:textSize="15sp"
-                android:layout_below="@id/tvOlvidasteContraseña" />
+                android:layout_below="@id/tvTienesCuenta" />
         </LinearLayout>
         </ScrollView>
     </androidx.cardview.widget.CardView>
