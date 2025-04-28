@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E5E7EB">
 
-    <!-- Imagen de fondo -->
-    <ImageView
-        android:id="@+id/imgFondo"
-        android:layout_width="match_parent"
-        android:layout_height="370dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_empresa" />
-
-    <!-- Logo EnRuta -->
-    <ImageView
-        android:id="@+id/logoEnRuta"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
-        android:src="@drawable/logo_app"
-        android:contentDescription="Logo" />
+    <include
+        layout="@layout/company_background_view" />
 
     <!-- Card de login superpuesto parcialmente sobre la imagen -->
     <androidx.cardview.widget.CardView
@@ -30,8 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginTop="-280dp"
-        android:layout_below="@id/imgFondo"
+        android:layout_marginTop="100dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="6dp">
 
@@ -121,7 +105,7 @@
 
             <!-- Input contraseña -->
             <EditText
-                android:id="@+id/etCorreo"
+                android:id="@+id/etNit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -295,4 +279,4 @@
         </ScrollView>
     </androidx.cardview.widget.CardView>
 
-</RelativeLayout>
+</merge>

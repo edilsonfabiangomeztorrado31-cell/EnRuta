@@ -3,4 +3,6 @@
     <string name="contactanos"><u>Contáctanos</u></string>
     <string name="recuperala">Recupérala <u>aquí</u></string>
     <string name="iniciaSeccion">Inicia sección <u>aquí</u></string>
+    <string name="navigation_drawer_open">Abrir menú</string>
+    <string name="navigation_drawer_close">Cerrar menú</string>
 </resources>

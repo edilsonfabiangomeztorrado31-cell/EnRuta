@@ -6,5 +6,6 @@
     <color name="blue_logo">#0A1F44</color>
     <color name="white_hueso">#968E8E</color>
     <color name="naranja">#F28C28</color>
+    <color name="transparente">#00000000</color>
 
 </resources>

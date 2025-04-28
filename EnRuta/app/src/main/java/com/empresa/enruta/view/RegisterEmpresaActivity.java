@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.empresa.enruta.presenter.RegisterEmpresaPresenter;
 public class RegisterEmpresaActivity extends AppCompatActivity implements RegisterEmpresaContract.View {
 
     private EditText etNombre, etNit, etCorreo, etRepresentante, etTipoEmpresa, etDireccion, etContacto, etContraseña;
+    private TextView tvRecuperar;
     private Button btnRegistrar;
     private RegisterEmpresaContract.Presenter presenter;
 
@@ -55,6 +57,7 @@ public class RegisterEmpresaActivity extends AppCompatActivity implements Regist
         etDireccion = findViewById(R.id.etDirrecion);
         etContacto = findViewById(R.id.etContacto);
         etContraseña = findViewById(R.id.etPassword);
+        tvRecuperar = findViewById(R.id.tvRecuperar);
 
         btnRegistrar = findViewById(R.id.btnRegistrarseEmpresa);
         btnRegistrar.setOnClickListener(v -> {
@@ -69,6 +72,9 @@ public class RegisterEmpresaActivity extends AppCompatActivity implements Regist
                     etContraseña.getText().toString()
             );
         });
+
+        tvRecuperar.setOnClickListener(v -> presenter.onIniciarSesionClicked());
+
     }
     @Override
     public void mostrarMensaje(String mensaje) {
@@ -78,6 +84,12 @@ public class RegisterEmpresaActivity extends AppCompatActivity implements Regist
     @Override
     public void registroExitoso(String mensaje) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void irAIniciarSesion() {
+        Intent intent = new Intent(this, LoginEmpresaActivity.class);
+        startActivity(intent);
     }
 }
 

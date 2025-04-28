@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_ubicacion" android:title="Ubicación actual" />
+    <item android:id="@+id/nav_historial" android:title="Historial de viajes" />
+    <item android:id="@+id/nav_notificaciones" android:title="Notificaciones" />
+    <item android:id="@+id/nav_seguridad" android:title="Seguridad" />
+    <item android:id="@+id/nav_configuracion" android:title="Configuración" />
+    <item android:id="@+id/nav_ayuda" android:title="Ayuda" />
+    <item android:id="@+id/nav_soporte" android:title="Soporte" />
+</menu>

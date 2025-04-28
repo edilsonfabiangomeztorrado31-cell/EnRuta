@@ -146,4 +146,10 @@ public class RegisterEmpresaPresenter implements RegisterEmpresaContract.Present
                     }
                 });
     }
+
+    public void onIniciarSesionClicked() {
+        // Lógica de navegación, pedirle a la View que abra la pantalla de login
+        view.irAIniciarSesion();
+    }
+
 }
