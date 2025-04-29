@@ -6,32 +6,161 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Este ConstraintLayout es tu 'contenido principal' -->
+    <!-- CONTENIDO PRINCIPAL -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
-        <!-- Incluimos tu header (toolbar + logo + menú) -->
+        <!-- Imagen de fondo + encabezado -->
         <include
             android:id="@+id/header_common"
             layout="@layout/company_background_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <!-- Card flotante -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardContent"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center_horizontal">
+
+            <!-- Texto de Bienvenida -->
+            <TextView
+                android:id="@+id/textWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¡Bienvenido TransCol SAS!\nComienza a publicar tus fletes y encuentra transportadores fácilmente."
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:paddingBottom="16dp" />
+
+            <!-- Imagen de gráfico ilustrativo -->
+            <ImageView
+                android:id="@+id/imageChart"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_grafico"
+                android:contentDescription="@string/chart_image"
+                android:layout_marginBottom="24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnGestionFletes"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_button_azul"
+                    android:backgroundTint="@null"
+                    android:text="Gestionar fletes"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnTransAsignado"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_button_azul"
+                    android:backgroundTint="@null"
+                    android:text="Transportadores asignados"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnVerHistorial"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_button_azul"
+                    android:backgroundTint="@null"
+                    android:text="Ver historial"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- TEXTO: ¿Necesitas ayuda? -->
+        <TextView
+            android:id="@+id/textHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Necesitas ayuda? "
+            android:textColor="@color/blue_logo"
+            app:layout_constraintBottom_toTopOf="@id/textContactanos"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- TEXTO: Contáctanos -->
+        <TextView
+            android:id="@+id/textContactanos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contactanos"
+            android:textColor="@color/blue_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="52dp"
+            android:layout_marginBottom="24dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- Contenedor de fragmentos (opcional) -->
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/header_common"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Aquí irá siempre el fragmento que cargues -->
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/header_common"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Menú deslizante lateral -->
+    <!-- NAVEGACIÓN LATERAL -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -39,5 +168,6 @@
         android:layout_gravity="start"
         app:menu="@menu/drawer_menu"
         app:headerLayout="@layout/nav_header" />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

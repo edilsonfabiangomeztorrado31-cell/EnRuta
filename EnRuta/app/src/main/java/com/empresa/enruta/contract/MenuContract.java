@@ -2,9 +2,14 @@ package com.empresa.enruta.contract;
 
 public interface MenuContract {
 
-    public interface MenuView {
+    interface MenuView {
         void mostrarOpcionesMenu();
         void mostrarError(String mensaje);
+        void cargarFragment(androidx.fragment.app.Fragment fragment);
+        void cerrarMenu();
     }
 
+    interface MenuPresenter {
+        void onMenuItemSelected(int itemId);
+    }
 }

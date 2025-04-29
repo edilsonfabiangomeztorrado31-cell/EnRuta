@@ -13,20 +13,34 @@
         android:theme="@style/Theme.EnRuta"
         tools:targetApi="31">
         <activity
-            android:name=".view.MenuFragmentActivity"
-            android:label=""
-            android:exported="true">
+            android:name=".view.VerHistorialActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.TransportadoresAsignadosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.GestionFletesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.EnRuta" />
+        <activity
+            android:name=".view.HomeEmpresaActivity"
+            android:exported="true"
+            android:label="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.WelcomeAppActivity" android:exported="true" />
-        <activity android:name=".view.RegisterTransportadorActivity" android:exported="true" />
-        <activity android:name=".view.HomeEmpresaActivity" android:exported="true" />
-        <activity android:name=".view.RegisterEmpresaActivity" android:exported="true" />
-
+        <activity
+            android:name=".view.WelcomeAppActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.RegisterTransportadorActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.RegisterEmpresaActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
