@@ -1,4 +1,4 @@
-package com.empresa.enruta.view;
+package com.empresa.enruta.view.company;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +13,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.empresa.enruta.R;
-import com.empresa.enruta.contract.HomeEmpresaContract;
-import com.empresa.enruta.contract.MenuContract;
-import com.empresa.enruta.presenter.HomeEmpresaPresenter;
-import com.empresa.enruta.presenter.MenuPresenterImpl;
+import com.empresa.enruta.contract.company.HomeEmpresaContract;
+import com.empresa.enruta.contract.company.MenuContract;
+import com.empresa.enruta.presenter.company.HomeEmpresaPresenter;
+import com.empresa.enruta.presenter.company.MenuPresenterImpl;
 import com.google.android.material.navigation.NavigationView;
 
 public class HomeEmpresaActivity extends AppCompatActivity implements HomeEmpresaContract.HomeEmpresaView, MenuContract.MenuView{

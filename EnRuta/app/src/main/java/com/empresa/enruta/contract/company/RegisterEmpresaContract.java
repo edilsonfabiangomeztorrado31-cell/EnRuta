@@ -1,4 +1,4 @@
-package com.empresa.enruta.contract;
+package com.empresa.enruta.contract.company;
 
 public interface RegisterEmpresaContract {
     interface View {

@@ -1,7 +1,7 @@
-package com.empresa.enruta.presenter;
+package com.empresa.enruta.presenter.company;
 
 import com.empresa.enruta.contract.FirebaseAuthErrorHandler;
-import com.empresa.enruta.contract.RegisterEmpresaContract;
+import com.empresa.enruta.contract.company.RegisterEmpresaContract;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +39,11 @@ public class RegisterEmpresaPresenter implements RegisterEmpresaContract.Present
             return;
         }
 
+        // Validar NIT
+        if (!nit.matches("\\d{7,10}")) {
+            view.mostrarMensaje("El NIT debe contener solo números y tener entre 7 y 10 dígitos");
+            return;
+        }
         // Validar longitud de correo
         if (correo.length() < 5 || correo.length() > 100) {
             view.mostrarMensaje("El correo debe tener entre 5 y 100 caracteres.");
@@ -70,12 +75,6 @@ public class RegisterEmpresaPresenter implements RegisterEmpresaContract.Present
         }
         if (!nombre.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+(\\s[a-zA-ZáéíóúÁÉÍÓÚñÑ]+)*$")) {
             view.mostrarMensaje("El nombre solo debe contener letras y espacios entre palabras.");
-            return;
-        }
-
-        // Validar NIT
-        if (!nit.matches("\\d{7,10}")) {
-            view.mostrarMensaje("El NIT debe contener solo números y tener entre 7 y 10 dígitos");
             return;
         }
 
@@ -132,7 +131,7 @@ public class RegisterEmpresaPresenter implements RegisterEmpresaContract.Present
 
                         database.child(uid).setValue(empresaData)
                                 .addOnSuccessListener(aVoid -> {
-                                    view.mostrarMensaje("Empresa registrada correctamente");
+                                    //view.mostrarMensaje("Empresa registrada correctamente");
                                     view.registroExitoso("Tu registro ha sido exitoso");
                                 })
                                 .addOnFailureListener(e -> view.mostrarMensaje("Error al guardar: " + e.getMessage()));

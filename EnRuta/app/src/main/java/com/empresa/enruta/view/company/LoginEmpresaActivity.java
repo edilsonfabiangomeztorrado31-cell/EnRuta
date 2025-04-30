@@ -1,4 +1,4 @@
-package com.empresa.enruta.view;
+package com.empresa.enruta.view.company;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.empresa.enruta.R;
-import com.empresa.enruta.contract.LoginEmpresaContract;
-import com.empresa.enruta.presenter.LoginEmpresaPresenter;
+import com.empresa.enruta.contract.company.LoginEmpresaContract;
+import com.empresa.enruta.presenter.company.LoginEmpresaPresenter;
 
 public class LoginEmpresaActivity extends AppCompatActivity implements LoginEmpresaContract.View {
 

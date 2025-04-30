@@ -1,6 +1,6 @@
-package com.empresa.enruta.presenter;
+package com.empresa.enruta.presenter.company;
 
-import com.empresa.enruta.contract.WelcomeAppContract;
+import com.empresa.enruta.contract.company.WelcomeAppContract;
 
 public class WelcomeAppPresenter implements WelcomeAppContract.Presenter {
 

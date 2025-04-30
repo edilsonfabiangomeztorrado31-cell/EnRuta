@@ -1,7 +1,7 @@
-package com.empresa.enruta.presenter;
+package com.empresa.enruta.presenter.company;
 
 import com.empresa.enruta.contract.FirebaseAuthErrorHandler;
-import com.empresa.enruta.contract.LoginEmpresaContract;
+import com.empresa.enruta.contract.company.LoginEmpresaContract;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

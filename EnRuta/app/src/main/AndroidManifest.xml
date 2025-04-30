@@ -13,17 +13,17 @@
         android:theme="@style/Theme.EnRuta"
         tools:targetApi="31">
         <activity
-            android:name=".view.VerHistorialActivity"
+            android:name=".view.company.VerHistorialActivity"
             android:exported="false" />
         <activity
-            android:name=".view.TransportadoresAsignadosActivity"
+            android:name=".view.company.TransportadoresAsignadosActivity"
             android:exported="false" />
         <activity
-            android:name=".view.GestionFletesActivity"
+            android:name=".view.company.GestionFletesActivity"
             android:exported="false"
             android:theme="@style/Theme.EnRuta" />
         <activity
-            android:name=".view.HomeEmpresaActivity"
+            android:name=".view.conveyor.RegisterCoveyorActivity"
             android:exported="true"
             android:label="">
             <intent-filter>
@@ -33,13 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.WelcomeAppActivity"
-            android:exported="true" />
-        <activity
-            android:name=".view.RegisterTransportadorActivity"
-            android:exported="true" />
-        <activity
-            android:name=".view.RegisterEmpresaActivity"
+            android:name=".view.company.WelcomeAppActivity"
             android:exported="true" />
     </application>
 

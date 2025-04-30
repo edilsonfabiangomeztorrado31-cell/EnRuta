@@ -1,4 +1,4 @@
-package com.empresa.enruta.view;
+package com.empresa.enruta.view.company;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.empresa.enruta.R;
-import com.empresa.enruta.contract.RegisterEmpresaContract;
-import com.empresa.enruta.presenter.RegisterEmpresaPresenter;
+import com.empresa.enruta.contract.company.RegisterEmpresaContract;
+import com.empresa.enruta.presenter.company.RegisterEmpresaPresenter;
 
 public class RegisterEmpresaActivity extends AppCompatActivity implements RegisterEmpresaContract.View {
 
@@ -50,7 +50,7 @@ public class RegisterEmpresaActivity extends AppCompatActivity implements Regist
         });
 
         etNombre = findViewById(R.id.etNombreEmpresa);
-        etNit = findViewById(R.id.etCorreo);
+        etNit = findViewById(R.id.etNit);
         etCorreo = findViewById(R.id.etCorreo);
         etRepresentante = findViewById(R.id.etRepresentanteLlegal);
         etTipoEmpresa = findViewById(R.id.etTipoEmpresa);

@@ -1,6 +1,6 @@
-package com.empresa.enruta.model;
+package com.empresa.enruta.model.company;
 
-public class Empresa {
+public class Company {
     private String nombre;
     private String nit;
     private String correo;
@@ -11,7 +11,7 @@ public class Empresa {
     private String tipoCarga;
     private String contraseña;
 
-    public Empresa(String nombre, String nit, String correo, String representante, String tipoEmpresa, String direccion, String contacto, String tipoCarga, String contraseña) {
+    public Company(String nombre, String nit, String correo, String representante, String tipoEmpresa, String direccion, String contacto, String tipoCarga, String contraseña) {
         this.nombre = nombre;
         this.nit = nit;
         this.correo = correo;

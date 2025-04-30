@@ -1,6 +1,6 @@
-package com.empresa.enruta.presenter;
+package com.empresa.enruta.presenter.company;
 
-import com.empresa.enruta.contract.HomeEmpresaContract;
+import com.empresa.enruta.contract.company.HomeEmpresaContract;
 
 public class HomeEmpresaPresenter implements HomeEmpresaContract.HomeEmpresaPresenter {
 

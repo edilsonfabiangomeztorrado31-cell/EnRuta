@@ -1,4 +1,4 @@
-package com.empresa.enruta.view;
+package com.empresa.enruta.view.company;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.empresa.enruta.R;
-import com.empresa.enruta.contract.WelcomeAppContract;
-import com.empresa.enruta.presenter.WelcomeAppPresenter;
+import com.empresa.enruta.contract.company.WelcomeAppContract;
+import com.empresa.enruta.presenter.company.WelcomeAppPresenter;
+import com.empresa.enruta.view.conveyor.RegisterCoveyorActivity;
 
 public class WelcomeAppActivity extends AppCompatActivity implements WelcomeAppContract.View {
 
@@ -31,6 +32,6 @@ public class WelcomeAppActivity extends AppCompatActivity implements WelcomeAppC
 
     @Override
     public void navegarTransportador() {
-        startActivity(new Intent(this, RegisterTransportadorActivity.class));
+        startActivity(new Intent(this, RegisterCoveyorActivity.class));
     }
 }

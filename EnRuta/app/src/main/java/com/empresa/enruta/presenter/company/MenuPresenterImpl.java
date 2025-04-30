@@ -1,11 +1,11 @@
-package com.empresa.enruta.presenter;
+package com.empresa.enruta.presenter.company;
 
 import android.util.Log;
 
 import androidx.fragment.app.Fragment;
 
 import com.empresa.enruta.R;
-import com.empresa.enruta.contract.MenuContract;
+import com.empresa.enruta.contract.company.MenuContract;
 import com.empresa.enruta.contract.fragments.*;
 
 public class MenuPresenterImpl implements MenuContract.MenuPresenter {

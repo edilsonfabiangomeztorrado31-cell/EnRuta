@@ -1,4 +1,4 @@
-package com.empresa.enruta.view;
+package com.empresa.enruta.view.company;
 
 import android.os.Bundle;
 
