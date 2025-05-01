@@ -1,5 +1,4 @@
-package com.empresa.enruta.contract.fragments;
-
+package com.empresa.enruta.contract.fragments.conveyor;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +10,8 @@ import androidx.fragment.app.Fragment;
 
 import com.empresa.enruta.R;
 
-public class SeguridadFragment extends Fragment {
+public class SeguridadFragmentConveyor extends Fragment {
+
     @Nullable
     @Override
 

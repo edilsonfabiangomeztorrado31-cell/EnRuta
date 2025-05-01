@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5E7EB">
+
+    <include
+        layout="@layout/conveyor_background_login" />
+
+    <!-- Card de login superpuesto parcialmente sobre la imagen -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="6dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:background="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Botones de pestaña -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnIniciarSesionSwift"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_button_azul_left"
+                            android:backgroundTint="@null"
+                            android:elevation="8dp"
+                            android:text="Iniciar sesión"
+                            android:textColor="@color/white"
+                            android:translationZ="8dp"
+                            app:backgroundTint="@null" />
+
+                        <Button
+                            android:id="@+id/btnRegistrarseSwift"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_button_naranja_right"
+                            android:backgroundTint="@null"
+                            android:text="Registrarse"
+                            android:textColor="@color/white"
+                            app:backgroundTint="@null" />
+
+                    </LinearLayout>
+                </FrameLayout>
+
+
+                <!-- Título -->
+                <TextView
+                    android:id="@+id/tvTitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    android:text="¡Bienvenido al rol de transportador!"
+                    android:textColor="#0A1F44"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Input contacto -->
+                <EditText
+                    android:id="@+id/etCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@android:color/transparent"
+                    android:drawablePadding="8dp"
+                    android:hint="Ingresa tu correo"
+                    android:inputType="text"
+                    android:textColor="@color/white_hueso" />
+
+                <!-- Línea separadora -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0" />
+
+                <!-- Input contraseña -->
+                <EditText
+                    android:id="@+id/etContrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/transparent"
+                    android:drawablePadding="8dp"
+                    android:hint="Ingresa tu contraseña"
+                    android:inputType="textPassword"
+                    android:paddingBottom="8dp"
+                    android:textColor="#000000" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0" />
+
+                <!-- Botón iniciar sesión -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnLoginConveyor"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_button_azul"
+                        android:backgroundTint="@null"
+                        android:text="Iniciar sesión"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@null" />
+
+                </LinearLayout>
+
+                <!-- Texto olvidaste contraseña -->
+                <TextView
+                    android:id="@+id/tvTienesCuenta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:text="¿Olvidaste tu contraseña?"
+                    android:textColor="@color/blue_logo"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tvRecuperar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvTienesCuenta"
+                    android:layout_gravity="center"
+                    android:text="@string/recuperala"
+                    android:textColor="@color/blue_logo"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+</merge>

@@ -1,4 +1,4 @@
-package com.empresa.enruta.contract.fragments;
+package com.empresa.enruta.contract.fragments.conveyor;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.empresa.enruta.R;
 
-public class NotificacionFragment extends Fragment {
+public class ConfiguracionFragmentCoveyor extends Fragment {
 
     @Nullable
     @Override
@@ -18,8 +18,7 @@ public class NotificacionFragment extends Fragment {
     public View onCreateView (@Nullable LayoutInflater inflater,
                               @Nullable ViewGroup container,
                               @Nullable Bundle savedInstatnceState){
-        return inflater.inflate(R.layout.fragment_notificaciones, container, false);
+        return inflater.inflate(R.layout.fragment_configuracion, container, false);
 
     }
 }
-

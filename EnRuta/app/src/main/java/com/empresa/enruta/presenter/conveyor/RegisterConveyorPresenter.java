@@ -124,6 +124,6 @@ public class RegisterConveyorPresenter implements RegisterConveyorContract.Prese
 
     @Override
     public void onIniciarSesionClicked() {
-        //view.irAIniciarSesion();
+        view.irAIniciarSesion();
     }
 }

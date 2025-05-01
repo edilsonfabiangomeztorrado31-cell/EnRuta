@@ -23,7 +23,7 @@
             android:exported="false"
             android:theme="@style/Theme.EnRuta" />
         <activity
-            android:name=".view.conveyor.RegisterCoveyorActivity"
+            android:name=".view.conveyor.HomeConveyorActivity"
             android:exported="true"
             android:label="">
             <intent-filter>

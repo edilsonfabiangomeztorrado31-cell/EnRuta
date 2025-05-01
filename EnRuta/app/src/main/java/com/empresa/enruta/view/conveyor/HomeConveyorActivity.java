@@ -1,9 +1,7 @@
-package com.empresa.enruta.view.company;
+package com.empresa.enruta.view.conveyor;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,16 +11,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.empresa.enruta.R;
-import com.empresa.enruta.contract.company.HomeEmpresaContract;
 import com.empresa.enruta.contract.company.MenuContract;
-import com.empresa.enruta.presenter.company.HomeEmpresaPresenter;
-import com.empresa.enruta.presenter.company.MenuPresenterImplCompany;
+import com.empresa.enruta.contract.conveyor.HomeConveyorContract;
+import com.empresa.enruta.presenter.conveyor.HomeConveyorPresenter;
+import com.empresa.enruta.presenter.conveyor.MenuPresenterImplConveyor;
 import com.google.android.material.navigation.NavigationView;
 
-public class HomeEmpresaActivity extends AppCompatActivity implements HomeEmpresaContract.HomeEmpresaView, MenuContract.MenuView{
+public class HomeConveyorActivity extends AppCompatActivity implements HomeConveyorContract.HomeConveyorView, MenuContract.MenuView{
 
-    private Button btnGestionFlete, btnTransAsignado, btnVerHistorial;
-    private HomeEmpresaContract.HomeEmpresaPresenter presenterHome;
+    private HomeConveyorContract.HomeConveyorPresenter presenterHome;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ImageView imgMenu;
@@ -31,16 +28,16 @@ public class HomeEmpresaActivity extends AppCompatActivity implements HomeEmpres
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_empresa);
+        setContentView(R.layout.activity_home_conveyor);
 
-        drawerLayout = findViewById(R.id.drawer_layout_company);
+        drawerLayout = findViewById(R.id.drawer_layout_conveyor);
         navigationView = findViewById(R.id.nav_view);
         imgMenu = findViewById(R.id.imgMenu);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        presenterMenu = new MenuPresenterImplCompany(this);
+        presenterMenu = new MenuPresenterImplConveyor(this);
 
         imgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,47 +55,7 @@ public class HomeEmpresaActivity extends AppCompatActivity implements HomeEmpres
             }
         });
 
-        btnGestionFlete = findViewById(R.id.btnGestionFletes);
-        btnTransAsignado = findViewById(R.id.btnTransAsignado);
-        btnVerHistorial = findViewById(R.id.btnVerHistorial);
-
-        presenterHome = new HomeEmpresaPresenter(this);
-
-        btnGestionFlete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenterHome.onGestionFleteClicked();
-            }
-        });
-
-        btnTransAsignado.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenterHome.onTransAsignadoClicked();
-            }
-        });
-
-        btnVerHistorial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenterHome.onVerHistorialClicked();
-            }
-        });
-    }
-
-    @Override
-    public void irAGestionFletes() {
-        startActivity(new Intent(this, GestionFletesActivity.class));
-    }
-
-    @Override
-    public void irATransportadoresAsignados() {
-        startActivity(new Intent(this, TransportadoresAsignadosActivity.class));
-    }
-
-    @Override
-    public void irAVerHistorial() {
-        startActivity(new Intent(this, VerHistorialActivity.class));
+        presenterHome = new HomeConveyorPresenter(this);
     }
 
     @Override

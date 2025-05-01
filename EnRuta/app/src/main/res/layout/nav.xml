@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/drawer_menu"
-        app:headerLayout="@layout/nav_header" />
+        app:menu="@menu/drawer_menu_company"
+        app:headerLayout="@layout/nav_header_company" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

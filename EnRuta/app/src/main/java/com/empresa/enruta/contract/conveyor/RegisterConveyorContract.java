@@ -6,9 +6,10 @@ public interface RegisterConveyorContract {
     interface View {
         void mostrarMensaje(String mensaje);
         void registroExitoso(String mensaje);
-        void irAIniciarSeccion();
         void showTipoDocumentoOptions(List<String> opciones);
         void showTipoVehiculoOptions(List<String> opciones);
+
+        void irAIniciarSesion();
     }
 
     interface Presenter {

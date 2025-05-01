@@ -10,7 +10,7 @@
         <!-- Header (toolbar + logo + menú) -->
         <include
             android:id="@+id/header_common"
-            layout="@layout/company_background_view"
+            layout="@layout/company_background_view_menu"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/drawer_menu"
-        app:headerLayout="@layout/nav_header" />
+        app:menu="@menu/drawer_menu_company"
+        app:headerLayout="@layout/nav_header_company" />
 
 </merge>

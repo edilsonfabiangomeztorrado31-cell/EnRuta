@@ -14,10 +14,10 @@ import com.empresa.enruta.presenter.company.LoginEmpresaPresenter;
 
 public class LoginEmpresaActivity extends AppCompatActivity implements LoginEmpresaContract.View {
 
-    private EditText etNI, etContraseña, etCorreo;
+    private EditText etContraseña, etCorreo;
     private Button btnIniciarSesion;
     private Button btnRegistrarse;
-    private Button btnLoginEmpresa;
+    private Button btnLoginConveyor;
     private LoginEmpresaContract.Presenter presenter;
 
     @Override
@@ -31,7 +31,7 @@ public class LoginEmpresaActivity extends AppCompatActivity implements LoginEmpr
         etContraseña = findViewById(R.id.etContrasena);
         btnIniciarSesion = findViewById(R.id.btnIniciarSesionSwift);
         btnRegistrarse = findViewById(R.id.btnRegistrarseSwift);
-        btnLoginEmpresa = findViewById(R.id.btnLoginEmpresa);
+        btnLoginConveyor = findViewById(R.id.btnLoginConveyor);
 
         btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_azul_left);
         btnRegistrarse.setBackgroundResource(R.drawable.bg_button_naranja_right);
@@ -49,7 +49,7 @@ public class LoginEmpresaActivity extends AppCompatActivity implements LoginEmpr
             startActivity(intent); // <-- te faltaba este startActivity
         });
 
-        btnLoginEmpresa.setOnClickListener(v -> {
+        btnLoginConveyor.setOnClickListener(v -> {
             String correo = etCorreo.getText().toString().trim();
             String contraseña = etContraseña.getText().toString().trim();
             presenter.login(correo, contraseña);

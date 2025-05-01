@@ -97,12 +97,6 @@ public class RegisterCoveyorActivity extends AppCompatActivity implements Regist
     }
 
     @Override
-    public void irAIniciarSeccion() {
-        Intent intent = new Intent(this, LoginConveyorActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
     public void showTipoDocumentoOptions(List<String> opciones) {
         List<String> opcionesModificables = new ArrayList<>(opciones); // Crear una lista modificable
         opcionesModificables.add(0, "Tipo de documento");
@@ -122,4 +116,9 @@ public class RegisterCoveyorActivity extends AppCompatActivity implements Regist
         spinnerTipoVehiculo.setAdapter(adapter);
     }
 
+    @Override
+    public void irAIniciarSesion() {
+        Intent intent = new Intent(this, LoginConveyorActivity.class);
+        startActivity(intent);
+    }
 }

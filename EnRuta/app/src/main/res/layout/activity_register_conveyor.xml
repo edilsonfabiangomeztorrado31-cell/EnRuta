@@ -6,7 +6,7 @@
     android:background="#E5E7EB">
 
     <include
-        layout="@layout/company_background_view" />
+        layout="@layout/conveyor_background_login" />
 
     <!-- Card de login superpuesto parcialmente sobre la imagen -->
     <androidx.cardview.widget.CardView

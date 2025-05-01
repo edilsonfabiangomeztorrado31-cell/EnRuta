@@ -1,4 +1,4 @@
-package com.empresa.enruta.contract.fragments;
+package com.empresa.enruta.contract.fragments.company;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.empresa.enruta.R;
 
-public class HistorialFragment extends Fragment {
+public class HistorialFragmentCompany extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@Nullable LayoutInflater inflater ,
