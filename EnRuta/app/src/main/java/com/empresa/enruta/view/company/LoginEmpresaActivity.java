@@ -64,7 +64,7 @@ public class LoginEmpresaActivity extends AppCompatActivity implements LoginEmpr
     @Override
     public void navegaAInicio(String mensaje) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, HomeEmpresaActivity.class);
+        Intent intent = new Intent(this, HomeCompanyActivity.class);
         startActivity(intent);
         finish();
     }

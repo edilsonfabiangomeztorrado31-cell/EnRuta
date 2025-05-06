@@ -19,6 +19,12 @@
             android:name=".view.company.TransportadoresAsignadosActivity"
             android:exported="false" />
         <activity
+            android:name=".view.company.CompanyMenuView"
+            android:exported="false" />
+        <activity
+            android:name=".view.conveyor.ConveyorMenuView"
+            android:exported="false" />
+        <activity
             android:name=".view.company.GestionFletesActivity"
             android:exported="false"
             android:theme="@style/Theme.EnRuta" />
