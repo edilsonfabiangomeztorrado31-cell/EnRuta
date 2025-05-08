@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:drawable/edit_text"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:text="Punto de origen del flete"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccione su ciudad"
+        android:layout_marginBottom="8dp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/tvCiudadOrigen"
+        android:text="Cúcuta"
+        android:layout_marginBottom="16dp"
+        android:padding="8dp"
+        android:background="@android:drawable/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Direccion de origen"
+        android:layout_marginBottom="8dp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/tvDireccionOrigen"
+        android:text="Cra. 8 # 9-92"
+        android:padding="8dp"
+        android:background="@android:drawable/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnHechoOrigen"
+        android:text="Hecho"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#D2F500"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+

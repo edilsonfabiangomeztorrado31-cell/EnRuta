@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import com.empresa.enruta.R;
 import com.empresa.enruta.contract.company.HomeEmpresaContract;
+import com.empresa.enruta.presenter.company.HomeEmpresaPresenter;
+import com.empresa.enruta.presenter.company.MenuPresenterImplCompany;
 
 public class HomeCompanyActivity extends CompanyMenuView implements HomeEmpresaContract.HomeEmpresaView{
 
@@ -18,10 +20,11 @@ public class HomeCompanyActivity extends CompanyMenuView implements HomeEmpresaC
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_home_company, findViewById(R.id.fragment_container_company));
 
+        presenterHome = new HomeEmpresaPresenter(this);
+
         btnGestionFlete = findViewById(R.id.btnGestionFletes);
         btnTransAsignado = findViewById(R.id.btnTransAsignado);
         btnVerHistorial = findViewById(R.id.btnVerHistorial);
-
 
         btnGestionFlete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +46,7 @@ public class HomeCompanyActivity extends CompanyMenuView implements HomeEmpresaC
                 presenterHome.onVerHistorialClicked();
             }
         });
+
     }
 
     @Override

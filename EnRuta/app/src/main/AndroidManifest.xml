@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EnRuta"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAMvlMwn_Z7w6nOmO-QpGoTP9O6Hb6Ypls"/>
         <activity
             android:name=".view.company.VerHistorialActivity"
             android:exported="false" />
@@ -25,11 +32,7 @@
             android:name=".view.conveyor.ConveyorMenuView"
             android:exported="false" />
         <activity
-            android:name=".view.company.GestionFletesActivity"
-            android:exported="false"
-            android:theme="@style/Theme.EnRuta" />
-        <activity
-            android:name=".view.conveyor.HomeConveyorActivity"
+            android:name=".view.company.RegisterFletesActivity"
             android:exported="true"
             android:label="">
             <intent-filter>
