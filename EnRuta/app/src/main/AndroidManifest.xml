@@ -19,6 +19,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAMvlMwn_Z7w6nOmO-QpGoTP9O6Hb6Ypls"/>
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="false" />
+
         <activity
             android:name=".view.company.VerHistorialActivity"
             android:exported="false" />

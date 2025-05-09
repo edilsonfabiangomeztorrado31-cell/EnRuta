@@ -4,10 +4,10 @@
     android:padding="16dp"
     android:background="@android:drawable/edit_text"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="600dp">
 
     <TextView
-        android:text="Selecciona tu ciudad"
+        android:text="Direccion del flete"
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_marginBottom="16dp"
@@ -15,20 +15,43 @@
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:id="@+id/tvBuscarCiudad"
-        android:text="Cúcuta"
+        android:id="@+id/tvBuscarDireccion"
+        android:hint="Punto de recogida flete"
         android:layout_marginBottom="16dp"
+        android:textSize="14sp"
         android:padding="8dp"
         android:background="@android:drawable/edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/ic_mapa"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/tvBuscarMapa"
+            android:text="@string/buscar_mapa"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
     <Button
-        android:id="@+id/btnHechoDestino"
+        android:id="@+id/btnHechoDireccion"
         android:text="Hecho"
         android:layout_marginTop="24dp"
         android:backgroundTint="#D2F500"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 </LinearLayout>
 

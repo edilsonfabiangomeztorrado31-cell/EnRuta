@@ -52,14 +52,14 @@
             android:background="@android:color/white">
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layoutBuscarCiudad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="0dp"
-            android:background="@android:color/white">
-        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:id="@+id/layoutBuscarDirreccion"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="0dp"-->
+<!--            android:background="@android:color/white">-->
+<!--        </LinearLayout>-->
 
 
         <TextView
@@ -73,52 +73,71 @@
             android:gravity="center"
             android:textStyle="bold"/>
 
-        <!-- Ubicación Origen -->
-        <EditText
-            android:id="@+id/etUbicacionOrigen"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
+            android:padding="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp">
+
+          <EditText
+              android:id="@+id/etUbicacionOrigen"
+              android:layout_width="0dp"
+              android:layout_weight="1"
+              android:layout_height="wrap_content"
+              android:hint="Ubicación origen"
+              android:inputType="text"
+              android:padding="12dp"
+              android:background="@android:color/transparent"
+              android:focusable="false"
+              android:clickable="true"
+              android:cursorVisible="false"
+              android:drawablePadding="8dp"
+              android:singleLine="true"/>
+
+          <ImageView
+              android:id="@+id/ivChevron"
+              android:src="@drawable/ic_chevron_right"
+              android:layout_width="25dp"
+              android:layout_height="25dp"
+              android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+      <LinearLayout
+          android:orientation="horizontal"
+          android:gravity="center_vertical"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@android:drawable/edit_text"
+          android:padding="4dp"
+          android:layout_marginTop="16dp"
+          android:layout_marginBottom="8dp">
+        <!-- Ubicación Destino -->
+        <EditText
+            android:id="@+id/etUbicacionDestino"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:hint="Ubicación origen"
             android:inputType="text"
             android:padding="12dp"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:drawableEnd="@drawable/ic_chevron_right"
-            android:drawablePadding="8dp"
+            android:background="@android:color/transparent"
             android:focusable="false"
             android:clickable="true"
-            android:cursorVisible="false"/>
-
-<!--        <com.google.android.gms.maps.MapView-->
-<!--            android:id="@+id/mapOrigen"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:clickable="true" />-->
-
-        <!-- Ubicación Destino -->
-        <EditText
-            android:id="@+id/etUbicacionDestino"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ubicación destino"
-            android:inputType="text"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:drawableEnd="@drawable/ic_chevron_right"
+            android:cursorVisible="false"
             android:drawablePadding="8dp"
-            android:focusable="false"
-            android:clickable="true"
-            android:cursorVisible="false"/>
+            android:singleLine="true"/>
 
-
-        <!--        <com.google.android.gms.maps.MapView-->
-<!--            android:id="@+id/mapDestino"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:clickable="true" />-->
+        <ImageView
+            android:id="@+id/ivChevronDestino"
+            android:src="@drawable/ic_chevron_right"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"/>
+      </LinearLayout>
 
         <!-- Tipo de carga -->
         <EditText
