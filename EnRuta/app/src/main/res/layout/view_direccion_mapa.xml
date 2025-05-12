@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardDireccionMapa"
+        android:layout_width="240dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="340dp"
+        android:elevation="6dp"
+        android:backgroundTint="@color/blue_logo"
+        app:cardCornerRadius="15dp"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvDireccionMapa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscando dirección..."
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:backgroundTint="@null"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

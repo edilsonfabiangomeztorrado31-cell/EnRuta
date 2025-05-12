@@ -14,15 +14,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/tvBuscarDireccion"
-        android:hint="Punto de recogida flete"
-        android:layout_marginBottom="16dp"
-        android:textSize="14sp"
-        android:padding="8dp"
-        android:background="@android:drawable/edit_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="Buscar dirección"
+        android:inputType="none"
+        android:focusable="false"
+        android:cursorVisible="false"
+        android:clickable="true"
+        android:drawableStart="@android:drawable/ic_menu_search" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -43,7 +44,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-
 
     <Button
         android:id="@+id/btnHechoDireccion"

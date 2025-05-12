@@ -19,6 +19,14 @@
         android:src="@drawable/ic_marker_center"/>
 
     <!-- Botón para confirmar ubicación -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top">
+
+        <include layout="@layout/view_direccion_mapa" />
+    </FrameLayout>
+
     <Button
         android:id="@+id/btnConfirmarDireccion"
         android:layout_width="match_parent"

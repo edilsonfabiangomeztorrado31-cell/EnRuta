@@ -23,12 +23,16 @@
 
     <EditText
         android:id="@+id/tvCiudadDestino"
-        android:text="Cúcuta"
         android:layout_marginBottom="16dp"
+        android:hint="Ejemplo: Cali"
         android:padding="8dp"
         android:background="@android:drawable/edit_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        android:focusable="false"
+        android:cursorVisible="false"
+        android:clickable="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,11 +43,16 @@
 
     <EditText
         android:id="@+id/tvDireccionDestino"
-        android:text="Cra. 8 # 9-92"
+        android:layout_marginBottom="16dp"
+        android:hint="Ejemplo: Cra. 8 # 9-92"
         android:padding="8dp"
         android:background="@android:drawable/edit_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        android:focusable="false"
+        android:cursorVisible="false"
+        android:clickable="true"/>
 
     <Button
         android:id="@+id/btnHechoDestino"
