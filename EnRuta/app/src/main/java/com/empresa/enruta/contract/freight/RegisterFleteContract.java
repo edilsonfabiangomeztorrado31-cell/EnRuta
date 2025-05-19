@@ -1,12 +1,15 @@
-package com.empresa.enruta.contract.company;
+package com.empresa.enruta.contract.freight;
 
 public interface RegisterFleteContract {
 
-    interface RegisterFleteView {
+    interface View {
+        void mostrarMensaje(String mensaje);
+        void registroExitoso(String mensaje);
         void irARegistrarFlete();
     }
 
-    interface RegisterFletePresenter{
-        void onRegistrarFlete();
+    interface Presenter {
+        void onRegistrarFlete(String ubicacionOrigen, String ubicacionDestino, String tipoCarga, String precio, String peso,
+                              String fechaRegistro);
     }
 }

@@ -6,13 +6,13 @@
 
     <!-- Mapa en la parte inferior -->
     <com.google.android.gms.maps.MapView
-        android:id="@+id/mapViewDireccion"
+        android:id="@+id/mapViewDireccionOrigen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
     <!-- Marcador centrado -->
     <ImageView
-        android:id="@+id/iv_marker_center"
+        android:id="@+id/iv_marker_center_origen"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
@@ -24,11 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top">
 
-        <include layout="@layout/view_direccion_mapa" />
+        <include layout="@layout/view_direccion_mapa_origen" />
     </FrameLayout>
 
     <Button
-        android:id="@+id/btnConfirmarDireccion"
+        android:id="@+id/btnConfirmarDireccionOrigen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Confirmar ubicación"

@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"/>
 
     <AutoCompleteTextView
-        android:id="@+id/tvBuscarDireccion"
+        android:id="@+id/tvBuscarDireccionOrigen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Buscar dirección"
@@ -38,7 +38,7 @@
             android:layout_marginEnd="8dp"/>
 
         <TextView
-            android:id="@+id/tvBuscarMapa"
+            android:id="@+id/tvBuscarMapaOrigen"
             android:text="@string/buscar_mapa"
             android:textSize="14sp"
             android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnHechoDireccion"
+        android:id="@+id/btnHechoDireccionOrigen"
         android:text="Hecho"
         android:layout_marginTop="24dp"
         android:backgroundTint="#D2F500"
