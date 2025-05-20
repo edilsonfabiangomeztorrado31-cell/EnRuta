@@ -1,7 +1,8 @@
-package com.empresa.enruta.view.company;
+package com.empresa.enruta.view.freight;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -24,6 +25,7 @@ import android.Manifest;
 import com.empresa.enruta.R;
 import com.empresa.enruta.contract.freight.RegisterFleteContract;
 import com.empresa.enruta.presenter.freight.RegisterFletePresenter;
+import com.empresa.enruta.view.company.CompanyMenuView;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -51,9 +53,7 @@ import java.util.Locale;
 public class RegisterFletesActivity extends CompanyMenuView implements RegisterFleteContract.View {
 
     private EditText etUbicacionOrigen, etUbicacionDestino, etTipoCarga, etPrecio, etPeso;
-    private String tipoCarga;
-    private Double Precio = 0.0;
-    private Double Peso = 0.0;
+    public String direccionFinal = "";
     private Button btnRegistrar;
     private TextView tvCiudadOrigen, tvCiudadDestino, tvBuscarDireccionOrigen, tvBuscarMapaOrigen, tvDireccionOrigen, tvDireccionDestino, tvBuscarDireccionDestino, tvBuscarMapaDestino;
     private EditText etFechaRegistro;
@@ -65,11 +65,19 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
     private String ciudadSeleccionadaOrigen = "";
     private String ciudadSeleccionadaDestino = "";
     private LatLngBounds ciudadBoundsSeleccionada;
+    private static PlacesClient placesClient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_registrar_fletes, findViewById(R.id.fragment_container_company));
+
+        if (!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(), getString(R.string.api_key));
+        }
+
+        placesClient = Places.createClient(this);
 
         // Inicializar mapa o fusedLocationClient aquí después de solicitar permisos
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -103,23 +111,10 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
                 result -> {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         Place place = Autocomplete.getPlaceFromIntent(result.getData());
-                        Log.i("PLACE", "Ciudad seleccionada: " + place.getName());
-                        String ciudad = place.getName();
-                        String placeId = place.getId();
-
-                        ciudadSeleccionadaOrigen = ciudad;
-
-                        if (tvCiudadOrigen != null) {
-                            tvCiudadOrigen.setText(ciudad);
-                        }
-
-                        if (placeId != null) {
-                            obtenerBoundsDeCiudad(placeId);
-                        }
-
+                        presenterFletes.onCiudadOrigenSeleccionada(place);
                     } else if (result.getResultCode() == AutocompleteActivity.RESULT_ERROR && result.getData() != null) {
                         Status status = Autocomplete.getStatusFromIntent(result.getData());
-                        Log.e("AUTOCOMPLETE_ERROR", status.getStatusMessage());
+                        presenterFletes.onErrorAutocomplete(status);
                     }
                 }
         );
@@ -130,22 +125,11 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         Place place = Autocomplete.getPlaceFromIntent(result.getData());
                         Log.i("PLACE", "Ciudad seleccionada: " + place.getName());
-                        String ciudad = place.getName();
-                        String placeId = place.getId();
 
-                        ciudadSeleccionadaDestino = ciudad;
-
-                        if (tvCiudadDestino != null) {
-                            tvCiudadDestino.setText(ciudad);
-                        }
-
-                        if (placeId != null) {
-                            obtenerBoundsDeCiudad(placeId);
-                        }
-
+                        presenterFletes.onCiudadDestinoSeleccionada(place);
                     } else if (result.getResultCode() == AutocompleteActivity.RESULT_ERROR && result.getData() != null) {
                         Status status = Autocomplete.getStatusFromIntent(result.getData());
-                        Log.e("AUTOCOMPLETE_ERROR", status.getStatusMessage());
+                        presenterFletes.onErrorAutocomplete(status);
                     }
                 }
         );
@@ -155,13 +139,25 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
                 result -> {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         Place place = Autocomplete.getPlaceFromIntent(result.getData());
-                        Log.i("BUSCADOR_DIRECCION", "Dirección seleccionada: " + place.getAddress());
+                        String direccionCompleta = place.getAddress();
 
-                        // Colocar la dirección en el campo
-                        tvBuscarDireccionOrigen.setText(place.getAddress());
+                        String direccionCorta = obtenerDireccionSinCiudadOrigen(direccionCompleta, ciudadSeleccionadaOrigen);
+                        direccionFinal = direccionCorta + ", " + ciudadSeleccionadaOrigen;
+
+                        Log.i("BUSCARDOR_DIRECCION_ORIGEN", "Dirección seleccionada: " + direccionFinal);
+                        presenterFletes.onDireccionOrigenSeleccionada(direccionFinal, place.getLatLng());
+
+                        if (etUbicacionOrigen != null) {
+                            etUbicacionOrigen.setText(ciudadSeleccionadaOrigen + ", " + direccionCorta);
+                        }
+                        // Aquí actualizamos el TextView si ya está creado
+                        if (tvDireccionOrigen != null) {
+                            tvDireccionOrigen.setText(direccionCorta);
+                        }
+
                     } else if (result.getResultCode() == AutocompleteActivity.RESULT_ERROR && result.getData() != null) {
                         Status status = Autocomplete.getStatusFromIntent(result.getData());
-                        Log.e("BUSCADOR_DIRECCION", "Error: " + status.getStatusMessage());
+                        presenterFletes.onErrorDireccionOrigen(status);
                     }
                 }
         );
@@ -171,13 +167,30 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
                 result -> {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         Place place = Autocomplete.getPlaceFromIntent(result.getData());
-                        Log.i("BUSCADOR_DIRECCION", "Dirección seleccionada: " + place.getAddress());
+                        String direccionCompleta = place.getAddress();
 
-                        // Colocar la dirección en el campo
-                        tvBuscarDireccionDestino.setText(place.getAddress());
+                        String direccionCorta = obtenerDireccionSinCiudadDestino(direccionCompleta, ciudadSeleccionadaOrigen);
+                        direccionFinal = direccionCorta + ", " + ciudadSeleccionadaOrigen;
+
+                        Log.i("BUSCARDOR_DIRECCION_ORIGEN", "Dirección seleccionada: " + direccionFinal);
+                        presenterFletes.onDireccionOrigenSeleccionada(direccionFinal, place.getLatLng());
+
+                        if (etUbicacionDestino != null) {
+                            etUbicacionDestino.setText(ciudadSeleccionadaDestino + ", " + direccionCorta);
+                        }
+                        // Aquí actualizamos el TextView si ya está creado
+                        if (tvDireccionDestino != null) {
+                            tvDireccionDestino.setText(direccionCorta);
+                        }
+
+                        if (tvBuscarDireccionDestino != null) {
+                            tvBuscarDireccionDestino.setText(direccionCorta);
+                        }
+
                     } else if (result.getResultCode() == AutocompleteActivity.RESULT_ERROR && result.getData() != null) {
                         Status status = Autocomplete.getStatusFromIntent(result.getData());
                         Log.e("BUSCADOR_DIRECCION", "Error: " + status.getStatusMessage());
+                        presenterFletes.onErrorDireccionDestino(status);
                     }
                 }
         );
@@ -193,27 +206,6 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
             @Override
             public void onClick(View view) {
                 mostrarBottomSheetUbicacionDestino();
-            }
-        });
-
-        etTipoCarga.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                guardadoTipoCarga();
-            }
-        });
-
-        etPrecio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                guardadoPrecio();
-            }
-        });
-
-        etPeso.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                guardadoPeso();
             }
         });
 
@@ -290,6 +282,46 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
         }
     }
 
+    @Override
+    public void mostrarCiudadOrigen(String ciudad) {
+        ciudadSeleccionadaOrigen = ciudad;
+        tvCiudadOrigen.setText(ciudad);
+    }
+
+    @Override
+    public void procesarBoundsCiudad(String placeId) {
+        obtenerBoundsDeCiudad(placeId); // método local que ya tienes
+    }
+
+    @Override
+    public void mostrarError(String mensaje) {
+        Log.e("AUTOCOMPLETE_ERROR", mensaje);
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void mostrarCiudadDestino(String ciudad) {
+        ciudadSeleccionadaDestino = ciudad;
+        tvCiudadDestino.setText(ciudad);
+    }
+
+    @Override
+    public void mostrarDireccionOrigen(String direccion) {
+        tvBuscarDireccionOrigen.setText(direccion);
+    }
+
+    @Override
+    public void mostrarDireccionDestino(String direccion) {
+        tvBuscarDireccionDestino.setText(direccion);
+    }
+
+    @Override
+    public void mostrarErrorDireccion(String mensaje) {
+        Log.e("BUSCADOR_DIRECCION", mensaje);
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void mostrarBottomSheetUbicacionOrigen() {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         View view = getLayoutInflater().inflate(R.layout.bottom_sheet_ubicacion_origen, null);
@@ -297,13 +329,13 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
 
         tvCiudadOrigen = view.findViewById(R.id.tvCiudadOrigen);
         Button btnHecho = view.findViewById(R.id.btnHechoOrigen);
-
         tvDireccionOrigen = view.findViewById(R.id.tvDireccionOrigen);
 
-        tvCiudadOrigen.setOnClickListener(v -> lanzarAutocompleteCiudadOrigen());
-        btnHecho.setOnClickListener(v -> bottomSheetDialog.dismiss());
+        // Delegar acciones al Presenter
+        tvCiudadOrigen.setOnClickListener(v -> presenterFletes.onClickSeleccionarCiudadOrigen());
+        tvDireccionOrigen.setOnClickListener(v -> presenterFletes.onClickSeleccionarDireccionOrigen());
 
-        tvDireccionOrigen.setOnClickListener(v -> mostrarBottomSheetSeleccionarDireccionOrigen());
+            btnHecho.setOnClickListener(v -> bottomSheetDialog.dismiss());
         bottomSheetDialog.show();
     }
 
@@ -316,17 +348,16 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
         tvDireccionDestino = view.findViewById(R.id.tvDireccionDestino);
         Button btnHecho = view.findViewById(R.id.btnHechoDestino);
 
-        tvCiudadDestino.setOnClickListener(v -> lanzarAutocompleteCiudadDestino());
+        // Delegar acciones al Presenter
+        tvCiudadDestino.setOnClickListener(v -> presenterFletes.onClickSeleccionarCiudadDestino());
+        tvDireccionDestino.setOnClickListener(v -> presenterFletes.onClickSeleccionarDireccionDestino());
+
         btnHecho.setOnClickListener(v -> bottomSheetDialog.dismiss());
 
-        tvDireccionDestino.setOnClickListener(v -> mostrarBottomSheetSeleccionarDireccionDestino());
         bottomSheetDialog.show();
     }
 
-    private void lanzarAutocompleteCiudadDestino() {
-        if (!Places.isInitialized()) {
-            Places.initialize(getApplicationContext(), "AIzaSyAMvlMwn_Z7w6nOmO-QpGoTP9O6Hb6Ypls");
-        }
+    public void lanzarAutocompleteCiudadDestino() {
 
         List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG);
 
@@ -338,10 +369,7 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
         autocompleteLauncherCiudadDestino.launch(intent);
     }
 
-    private void lanzarAutocompleteCiudadOrigen() {
-        if (!Places.isInitialized()) {
-            Places.initialize(getApplicationContext(), "AIzaSyAMvlMwn_Z7w6nOmO-QpGoTP9O6Hb6Ypls");
-        }
+    public void lanzarAutocompleteCiudadOrigen() {
 
         List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG);
 
@@ -359,24 +387,42 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
         // Asegúrate de cerrar la API de Places cuando ya no la necesites.
     }
 
-    private void lanzarBuscadorDireccionDestino() {
-        if (ciudadSeleccionadaDestino.isEmpty() || ciudadBoundsSeleccionada == null) {
-            Toast.makeText(this, "Primero selecciona una ciudad", Toast.LENGTH_SHORT).show();
-            return;
-        }
+    @Override
+    public void mostrarBottomSheetBuscarDireccionOrigen() {
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        View view = getLayoutInflater().inflate(R.layout.bottom_sheet_seleccionar_direccion_origen, null);
+        bottomSheetDialog.setContentView(view);
 
-        List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
+        tvBuscarDireccionOrigen = view.findViewById(R.id.tvBuscarDireccionOrigen);
+        tvBuscarMapaOrigen = view.findViewById(R.id.tvBuscarMapaOrigen);
+        Button btnHechoDireccion = view.findViewById(R.id.btnHechoDireccionOrigen);
 
-        Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields)
-                //.setTypeFilter(TypeFilter.ADDRESS)
-                .setCountries(Arrays.asList("CO"))
-                .setLocationRestriction(RectangularBounds.newInstance(ciudadBoundsSeleccionada))
-                .build(this);
+        // Delegar al Presenter
+        tvBuscarMapaOrigen.setOnClickListener(v -> presenterFletes.onClickBuscarMapaOrigen());
+        tvBuscarDireccionOrigen.setOnClickListener(v -> presenterFletes.onClickBuscarDireccionOrigen());
 
-        autocompleteLauncherDireccionDestino.launch(intent);
+        btnHechoDireccion.setOnClickListener(v -> bottomSheetDialog.dismiss());
+        bottomSheetDialog.show();
     }
 
-    private void lanzarBuscadorDireccionOrigen() {
+    @Override
+    public void mostrarBottomSheetBuscarDireccionDestino() {
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        View view = getLayoutInflater().inflate(R.layout.bottom_sheet_seleccionar_direccion_destino, null);
+        bottomSheetDialog.setContentView(view);
+
+        tvBuscarDireccionDestino = view.findViewById(R.id.tvBuscarDireccionDestino);
+        tvBuscarMapaDestino = view.findViewById(R.id.tvBuscarMapaDestino);
+        Button btnHechoDireccionDestino = view.findViewById(R.id.btnHechoDireccionDestino);
+
+        tvBuscarMapaDestino.setOnClickListener(v -> presenterFletes.onClickBuscarMapaDestino());
+        tvBuscarDireccionDestino.setOnClickListener(v -> presenterFletes.onClickBuscarDireccionDestino());
+
+        btnHechoDireccionDestino.setOnClickListener(v -> bottomSheetDialog.dismiss());
+        bottomSheetDialog.show();
+    }
+
+    public void lanzarBuscadorDireccionOrigen() {
         if (ciudadSeleccionadaOrigen.isEmpty() || ciudadBoundsSeleccionada == null) {
             Toast.makeText(this, "Primero selecciona una ciudad", Toast.LENGTH_SHORT).show();
             return;
@@ -393,163 +439,7 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
         autocompleteLauncherDireccionOrigen.launch(intent);
     }
 
-
-    public void mostrarBottomSheetSeleccionarDireccionOrigen() {
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        View view = getLayoutInflater().inflate(R.layout.bottom_sheet_seleccionar_direccion_origen, null);
-        bottomSheetDialog.setContentView(view);
-
-        tvBuscarDireccionOrigen = view.findViewById(R.id.tvBuscarDireccionOrigen);
-        tvBuscarMapaOrigen = view.findViewById(R.id.tvBuscarMapaOrigen);
-        Button btnHechoDireccion = view.findViewById(R.id.btnHechoDireccionOrigen);
-
-        btnHechoDireccion.setOnClickListener(v -> bottomSheetDialog.dismiss());
-        bottomSheetDialog.show();
-
-        tvBuscarMapaOrigen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mostrarBottomSheetMapaDireccionOrigen();
-            }
-        });
-
-        tvBuscarDireccionOrigen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lanzarBuscadorDireccionOrigen();
-            }
-        });
-    }
-
-    public void mostrarBottomSheetSeleccionarDireccionDestino() {
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        View view = getLayoutInflater().inflate(R.layout.bottom_sheet_seleccionar_direccion_destino, null);
-        bottomSheetDialog.setContentView(view);
-
-        tvBuscarDireccionDestino = view.findViewById(R.id.tvBuscarDireccionDestino);
-        tvBuscarMapaDestino = view.findViewById(R.id.tvBuscarMapaDestino);
-        Button btnHechoDireccionDestino = view.findViewById(R.id.btnHechoDireccionDestino);
-
-        btnHechoDireccionDestino.setOnClickListener(v -> bottomSheetDialog.dismiss());
-        bottomSheetDialog.show();
-
-        tvBuscarMapaDestino.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mostrarBottomSheetMapaDireccionDestino();
-            }
-        });
-
-        tvBuscarDireccionDestino.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lanzarBuscadorDireccionDestino();
-            }
-        });
-    }
-
-    private void mostrarBottomSheetMapaDireccionDestino() {
-        Dialog dialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
-        View view = getLayoutInflater().inflate(R.layout.bottom_sheet_mapa_direccion_destino, null);
-        dialog.setContentView(view);
-        dialog.show();
-
-        MapView mapView = view.findViewById(R.id.mapViewDireccionDestino);
-        ImageView ivMarkerCenter = view.findViewById(R.id.iv_marker_center_destino);
-        Button btnConfirmar = view.findViewById(R.id.btnConfirmarDireccionDestino);
-        TextView tvDireccionMapa = view.findViewById(R.id.tvDireccionMapaDestino);
-
-        mapView.onCreate(null);
-        mapView.onResume();
-
-        // Obtener coordenadas desde Geocoder según ciudadSeleccionadaOrigen
-        LatLng[] latLngInicial = {new LatLng(7.8891, -72.4967)}; // Valor por defecto en caso de error
-
-        if (!ciudadSeleccionadaDestino.isEmpty()) {
-            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-            try {
-                List<Address> addresses = geocoder.getFromLocationName(ciudadSeleccionadaDestino, 1);
-                if (addresses != null && !addresses.isEmpty()) {
-                    Address address = addresses.get(0);
-                    latLngInicial[0] = new LatLng(address.getLatitude(), address.getLongitude());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        mapView.getMapAsync(googleMap -> {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                    && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-                return;
-            }
-
-            googleMap.setMyLocationEnabled(true);
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngInicial[0], 15));
-
-            final LatLng[] currentCenter = {latLngInicial[0]};
-
-            googleMap.setOnCameraIdleListener(() -> {
-                LatLng center = googleMap.getCameraPosition().target;
-                currentCenter[0] = center;
-
-                // Animación ligera de rebote
-                ivMarkerCenter.animate()
-                        .translationY(-20f)
-                        .setDuration(150)
-                        .withEndAction(() -> ivMarkerCenter.animate()
-                                .translationY(0f)
-                                .setDuration(150)
-                                .start())
-                        .start();
-
-                // Actualizar dirección en la card
-                String direccion = obtenerDireccion(center.latitude, center.longitude);
-                tvDireccionMapa.setText(direccion);
-
-                tvDireccionMapa.animate()
-                        .alpha(0f)
-                        .setDuration(150)
-                        .withEndAction(() -> {
-                            tvDireccionMapa.setText(direccion);
-                            tvDireccionMapa.animate().alpha(1f).setDuration(150).start();
-                        }).start();
-
-                Log.i("MAPA", "Centro actual: " + center.latitude + ", " + center.longitude);
-            });
-
-            btnConfirmar.setOnClickListener(v -> {
-                LatLng ubicacionSeleccionada = currentCenter[0];
-                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-                try {
-                    List<Address> addresses = geocoder.getFromLocation(ubicacionSeleccionada.latitude, ubicacionSeleccionada.longitude, 1);
-                    if (addresses != null && !addresses.isEmpty()) {
-                        Address address = addresses.get(0);
-                        String direccionSolo = obtenerDireccion(ubicacionSeleccionada.latitude, ubicacionSeleccionada.longitude);
-
-                        // Mostrar solo dirección en tvBuscarDireccionOrigen
-                        tvBuscarDireccionDestino.setText(direccionSolo);
-
-                        // Concatenar ciudad ya seleccionada + dirección, y mostrar en etUbicacionOrigen y tvDireccionOrigen
-                        String direccionCompleta = ciudadSeleccionadaDestino + " - " + direccionSolo;
-
-                        etUbicacionDestino.setText(direccionCompleta);
-                        tvDireccionDestino.setText(direccionCompleta);
-
-                        Log.i("MAPA", "Dirección seleccionada: " + direccionCompleta);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                dialog.dismiss();
-            });
-        });
-
-        dialog.show();
-    }
-
-    private void mostrarBottomSheetMapaDireccionOrigen() {
+    public void mostrarBottomSheetMapaDireccionOrigen() {
         Dialog dialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
         View view = getLayoutInflater().inflate(R.layout.bottom_sheet_mapa_direccion_origen, null);
         dialog.setContentView(view);
@@ -651,17 +541,130 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
         dialog.show();
     }
 
+    public void lanzarBuscadorDireccionDestino() {
+        if (ciudadSeleccionadaDestino.isEmpty() || ciudadBoundsSeleccionada == null) {
+            Toast.makeText(this, "Primero selecciona una ciudad", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
+
+        Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields)
+                //.setTypeFilter(TypeFilter.ADDRESS)
+                .setCountries(Arrays.asList("CO"))
+                .setLocationRestriction(RectangularBounds.newInstance(ciudadBoundsSeleccionada))
+                .build(this);
+
+        autocompleteLauncherDireccionDestino.launch(intent);
+    }
+
+    public void mostrarBottomSheetMapaDireccionDestino() {
+        Dialog dialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        View view = getLayoutInflater().inflate(R.layout.bottom_sheet_mapa_direccion_destino, null);
+        dialog.setContentView(view);
+        dialog.show();
+
+        MapView mapView = view.findViewById(R.id.mapViewDireccionDestino);
+        ImageView ivMarkerCenter = view.findViewById(R.id.iv_marker_center_destino);
+        Button btnConfirmar = view.findViewById(R.id.btnConfirmarDireccionDestino);
+        TextView tvDireccionMapa = view.findViewById(R.id.tvDireccionMapaDestino);
+
+        mapView.onCreate(null);
+        mapView.onResume();
+
+        // Obtener coordenadas desde Geocoder según ciudadSeleccionadaOrigen
+        LatLng[] latLngInicial = {new LatLng(7.8891, -72.4967)}; // Valor por defecto en caso de error
+
+        if (!ciudadSeleccionadaDestino.isEmpty()) {
+            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+            try {
+                List<Address> addresses = geocoder.getFromLocationName(ciudadSeleccionadaDestino, 1);
+                if (addresses != null && !addresses.isEmpty()) {
+                    Address address = addresses.get(0);
+                    latLngInicial[0] = new LatLng(address.getLatitude(), address.getLongitude());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        mapView.getMapAsync(googleMap -> {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                return;
+            }
+
+            googleMap.setMyLocationEnabled(true);
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngInicial[0], 15));
+
+            final LatLng[] currentCenter = {latLngInicial[0]};
+
+            googleMap.setOnCameraIdleListener(() -> {
+                LatLng center = googleMap.getCameraPosition().target;
+                currentCenter[0] = center;
+
+                // Animación ligera de rebote
+                ivMarkerCenter.animate()
+                        .translationY(-20f)
+                        .setDuration(150)
+                        .withEndAction(() -> ivMarkerCenter.animate()
+                                .translationY(0f)
+                                .setDuration(150)
+                                .start())
+                        .start();
+
+                // Actualizar dirección en la card
+                String direccion = obtenerDireccion(center.latitude, center.longitude);
+                tvDireccionMapa.setText(direccion);
+
+                tvDireccionMapa.animate()
+                        .alpha(0f)
+                        .setDuration(150)
+                        .withEndAction(() -> {
+                            tvDireccionMapa.setText(direccion);
+                            tvDireccionMapa.animate().alpha(1f).setDuration(150).start();
+                        }).start();
+
+                Log.i("MAPA", "Centro actual: " + center.latitude + ", " + center.longitude);
+            });
+
+            btnConfirmar.setOnClickListener(v -> {
+                LatLng ubicacionSeleccionada = currentCenter[0];
+                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+                try {
+                    List<Address> addresses = geocoder.getFromLocation(ubicacionSeleccionada.latitude, ubicacionSeleccionada.longitude, 1);
+                    if (addresses != null && !addresses.isEmpty()) {
+                        Address address = addresses.get(0);
+                        String direccionSolo = obtenerDireccion(ubicacionSeleccionada.latitude, ubicacionSeleccionada.longitude);
+
+                        // Mostrar solo dirección en tvBuscarDireccionOrigen
+                        tvBuscarDireccionDestino.setText(direccionSolo);
+
+                        // Concatenar ciudad ya seleccionada + dirección, y mostrar en etUbicacionOrigen y tvDireccionOrigen
+                        String direccionCompleta = ciudadSeleccionadaDestino + " - " + direccionSolo;
+
+                        etUbicacionDestino.setText(direccionCompleta);
+                        tvDireccionDestino.setText(direccionCompleta);
+
+                        Log.i("MAPA", "Dirección seleccionada: " + direccionCompleta);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                dialog.dismiss();
+            });
+        });
+
+        dialog.show();
+    }
+
     private String obtenerDireccion(double latitud, double longitud) {
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         try {
             List<Address> direcciones = geocoder.getFromLocation(latitud, longitud, 1);
             if (direcciones != null && !direcciones.isEmpty()) {
                 Address direccion = direcciones.get(0);
-
-//                String ciudad = direccion.getLocality(); // Ej: Cúcuta
-//                if (ciudad == null || ciudad.isEmpty()) {
-//                    ciudad = direccion.getSubAdminArea(); // Alternativa si locality no funciona
-//                }
 
                 // Limpiar cualquier # en vía y número
                 String via = direccion.getThoroughfare() != null ? direccion.getThoroughfare().replace("#", "").trim() : "";
@@ -689,8 +692,12 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
 
 
     private void obtenerBoundsDeCiudad(String placeId) {
-        PlacesClient placesClient = Places.createClient(this);
-        List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.VIEWPORT);
+        List<Place.Field> fields = Arrays.asList(
+                Place.Field.ID,
+                Place.Field.NAME,
+                Place.Field.LAT_LNG,
+                Place.Field.VIEWPORT
+        );
 
         FetchPlaceRequest request = FetchPlaceRequest.builder(placeId, fields).build();
 
@@ -700,10 +707,10 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
                     ciudadBoundsSeleccionada = place.getViewport();
 
                     if (ciudadBoundsSeleccionada == null && place.getLatLng() != null) {
-                        // Si no viene viewport, creas un bound manual de 5km a la redonda, por ejemplo:
+                        // Si no viene viewport, creas un bound manual de 5km a la redonda
                         double lat = place.getLatLng().latitude;
                         double lng = place.getLatLng().longitude;
-                        double delta = 0.045; // ~5km
+                        double delta = 0.045; // Aproximadamente 5km
 
                         ciudadBoundsSeleccionada = new LatLngBounds(
                                 new LatLng(lat - delta, lng - delta),
@@ -716,46 +723,40 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
                 .addOnFailureListener(e -> Log.e("PLACES", "Error al obtener bounds: " + e.getMessage()));
     }
 
-    private void guardadoTipoCarga() {
-        tipoCarga = etTipoCarga.getText().toString().trim();
+    private String obtenerDireccionSinCiudadOrigen(String direccionCompleta, String ciudadSeleccionada) {
+        if (direccionCompleta == null) return "";
 
-        if (!tipoCarga.isEmpty()) {
-            Log.i("TIPO_CARGA", "Tipo de carga guardado: " + tipoCarga);
-            // Aquí puedes hacer algo adicional como guardar en Firebase o mostrar un mensaje
-        } else {
-            Toast.makeText(this, "Por favor ingresa el tipo de carga", Toast.LENGTH_SHORT).show();
+        if (direccionCompleta.contains(ciudadSeleccionada)) {
+            return direccionCompleta.split(ciudadSeleccionada)[0].replaceAll(",\\s*$", "").trim();
         }
+
+        String[] partes = direccionCompleta.split(",");
+        return partes.length > 0 ? partes[0].trim() : direccionCompleta.trim();
     }
 
-    private void guardadoPrecio() {
-        String precioTexto = etPrecio.getText().toString().trim();
-        if (!precioTexto.isEmpty()) {
-            try {
-                Precio = Double.parseDouble(precioTexto);
 
-                Log.i("Precio", "Este es el precio seleccionado: " + Precio);
+    private String obtenerDireccionSinCiudadDestino(String direccionCompleta, String ciudadSeleccionada) {
+        if (direccionCompleta == null) return "";
 
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-                // Manejo de error si el valor ingresado no es un número válido
-
-                Toast.makeText(this, "Por favor ingresa el precio", Toast.LENGTH_SHORT).show();
-            }
+        // Ejemplo: "Cra. 10 #20-30, Medellín, Antioquia, Colombia"
+        // Vamos a tomar solo lo que aparece antes de la ciudad
+        if (direccionCompleta.contains(ciudadSeleccionada)) {
+            return direccionCompleta.split(ciudadSeleccionada)[0].replaceAll(",\\s*$", "").trim();
         }
+
+        // Alternativa: tomar solo la primera parte antes de la primera coma
+        String[] partes = direccionCompleta.split(",");
+        return partes.length > 0 ? partes[0].trim() : direccionCompleta.trim();
     }
 
-    private void guardadoPeso(){
-        String pesoTexto = etPeso.getText().toString().trim();
-        if (!pesoTexto.isEmpty()) {
-            try {
-                Peso = Double.parseDouble(pesoTexto);
-
-                Log.i("Peso", "Este es el peso seleccionado: " + Peso);
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-                Toast.makeText(this, "Por favor ingresa el peso", Toast.LENGTH_SHORT).show();
-            }
-        }
+    @Override
+    public void limpiarCampos() {
+        etUbicacionOrigen.setText("");
+        etUbicacionDestino.setText("");
+        etTipoCarga.setText("");
+        etPrecio.setText("");
+        etPeso.setText("");
+        etFechaRegistro.setText(""); // si estás mostrando la fecha en un TextView
     }
 }
 

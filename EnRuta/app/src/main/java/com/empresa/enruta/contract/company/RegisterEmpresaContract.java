@@ -5,6 +5,7 @@ public interface RegisterEmpresaContract {
         void mostrarMensaje(String mensaje);
         void registroExitoso(String mensaje);
         void irAIniciarSesion();
+
     }
 
     interface Presenter {

@@ -9,6 +9,7 @@ import androidx.activity.EdgeToEdge;
 import com.empresa.enruta.R;
 import com.empresa.enruta.contract.company.PanelEmpresaContract;
 import com.empresa.enruta.presenter.company.PanelEmpresaPresenter;
+import com.empresa.enruta.view.freight.RegisterFletesActivity;
 
 public class GestionFletesActivity extends CompanyMenuView implements PanelEmpresaContract.PanelEmpresaView {
 
