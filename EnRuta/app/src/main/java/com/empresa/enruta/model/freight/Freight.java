@@ -1,13 +1,21 @@
 package com.empresa.enruta.model.freight;
 
+import android.util.Log;
+
+import com.google.firebase.database.PropertyName;
+
 public class Freight {
 
+    private String id;
     private String ubicacionOrigen;
     private String ubicacionDestino;
     private String tipoCarga;
     private String precio;
     private String peso;
     private String fechaRegistro;
+
+    public Freight() {
+    }
 
     public Freight(String ubicacionOrigen, String ubicacionDestino, String tipoCarga, String precio, String peso, String fechaRegistro) {
         this.ubicacionOrigen = ubicacionOrigen;
@@ -18,7 +26,16 @@ public class Freight {
         this.fechaRegistro = fechaRegistro;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getUbicacionOrigen() {
+        Log.i("GET UBICACION ORIGEN", "UBICACION GUARDADA EN LA BASE DE DATOS: " + ubicacionOrigen);
         return ubicacionOrigen;
     }
 

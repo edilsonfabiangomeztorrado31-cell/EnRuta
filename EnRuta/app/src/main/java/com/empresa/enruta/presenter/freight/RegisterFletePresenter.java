@@ -166,12 +166,12 @@ public class RegisterFletePresenter implements RegisterFleteContract.Presenter {
         String uid = user != null ? user.getUid() : database.push().getKey(); // Fallback en caso de no haber auth
 
         Map<String, Object> fleteData = new HashMap<>();
-        fleteData.put("ubicacion_origen", ubicacionOrigen.trim());
-        fleteData.put("ubicacion_destino", ubicacionDestino.trim());
-        fleteData.put("tipo_carga", tipoCarga.trim());
+        fleteData.put("ubicacionOrigen", ubicacionOrigen.trim());
+        fleteData.put("ubicacionDestino", ubicacionDestino.trim());
+        fleteData.put("tipoCarga", tipoCarga.trim());
         fleteData.put("precio", precio.trim());
         fleteData.put("peso", peso.trim());
-        fleteData.put("fecha_registro", fechaRegistro.trim());
+        fleteData.put("fechaRegistro", fechaRegistro.trim());
 
         // Guardar el flete con un ID único generado por push()
         database.push().setValue(fleteData)

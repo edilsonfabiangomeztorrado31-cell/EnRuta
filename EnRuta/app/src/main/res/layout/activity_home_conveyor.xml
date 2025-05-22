@@ -82,14 +82,14 @@
                         android:orientation="vertical">
 
                 <!-- CardView con detalles del flete -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardFleteDetalle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="6dp"
-                    android:layout_margin="8dp">
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/cardFleteDetalle"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="16dp"-->
+<!--                    app:cardCornerRadius="16dp"-->
+<!--                    app:cardElevation="6dp"-->
+<!--                    android:layout_margin="8dp">-->
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -97,94 +97,18 @@
                         android:orientation="vertical"
                         android:padding="16dp">
 
-                        <TextView
-                            android:id="@+id/tvFleteDetalle"
-                            android:layout_width="wrap_content"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewFletes"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Origen: Bogotá, Cundinamarca\nDestino: Cali, Valle del Cauca\nCarga: Electrodomésticos\nPeso: 7 Toneladas\nPago: $1.800.000\nFecha: 20/04/2025"
                             android:textSize="14sp"
                             android:textColor="@color/black"
                             android:layout_marginBottom="12dp" />
 
-                        <Button
-                            android:id="@+id/btnDetalleFlete"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Detalle Flete"
-                            android:backgroundTint="@color/naranja"
-                            android:textColor="@android:color/white" />
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+<!--                </androidx.cardview.widget.CardView>-->
 
-                    <!-- CardView con detalles del flete -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardFleteDetalle2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="6dp"
-                        android:layout_margin="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:id="@+id/tvFleteDetalle2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Origen: Bogotá, Cundinamarca\nDestino: Cali, Valle del Cauca\nCarga: Electrodomésticos\nPeso: 7 Toneladas\nPago: $1.800.000\nFecha: 20/04/2025"
-                                android:textSize="14sp"
-                                android:textColor="@color/black"
-                                android:layout_marginBottom="12dp" />
-
-                            <Button
-                                android:id="@+id/btnDetalleFlete2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Detalle Flete"
-                                android:backgroundTint="@color/naranja"
-                                android:textColor="@android:color/white" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                        <!-- CardView con detalles del flete -->
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cardFleteDetalle3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
-                            app:cardCornerRadius="16dp"
-                            app:cardElevation="6dp"
-                            android:layout_margin="8dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="16dp">
-
-                                <TextView
-                                    android:id="@+id/tvFleteDetalle3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Origen: Bogotá, Cundinamarca\nDestino: Cali, Valle del Cauca\nCarga: Electrodomésticos\nPeso: 7 Toneladas\nPago: $1.800.000\nFecha: 20/04/2025"
-                                    android:textSize="14sp"
-                                    android:textColor="@color/black"
-                                    android:layout_marginBottom="12dp" />
-
-                                <Button
-                                    android:id="@+id/btnDetalleFlete3"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Detalle Flete"
-                                    android:backgroundTint="@color/naranja"
-                                    android:textColor="@android:color/white" />
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
                     </LinearLayout>
                 </ScrollView>
             </LinearLayout>

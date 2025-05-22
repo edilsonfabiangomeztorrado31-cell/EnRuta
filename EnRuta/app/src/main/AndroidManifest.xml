@@ -36,7 +36,10 @@
             android:name=".view.conveyor.ConveyorMenuView"
             android:exported="false" />
         <activity
-            android:name=".view.freight.RegisterFletesActivity"
+            android:name=".view.freight.DetalleFleteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.conveyor.HomeConveyorActivity"
             android:exported="true"
             android:label="">
             <intent-filter>
