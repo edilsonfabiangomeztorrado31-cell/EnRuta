@@ -12,13 +12,14 @@ public interface DetalleFleteContract {
         void mostrarDetalleFlete(Freight freight);
         void mostrarMensaje(String mensaje);
         void irATomarFlete(Freight freight);
-
+        void irAMostrarMapa(Freight freight);
     }
 
     interface DetalleFletePresenter {
         void obtenerDetalleFletes();
         void obtenerFletePorId(String id);
         void onTomarFleteClick(Freight freight);
+        void onVerRutaClick(Freight freight);
     }
     interface DetalleFleteModel {
         void cargarDetalleFletes(FleteDetalleCallback callback);

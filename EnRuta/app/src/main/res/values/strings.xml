@@ -6,6 +6,7 @@
     <string name="navigation_drawer_open">Abrir menú</string>
     <string name="navigation_drawer_close">Cerrar menú</string>
     <string name="buscar_mapa"><u>Buscar en el mapa</u></string>
+    <string name="direccion_mapa"><u>Ver direccion de ruta en el mapa</u></string>
     <string name="chart_image">Grafico de estadisticas</string>
     <string name="api_key">AIzaSyAMvlMwn_Z7w6nOmO-QpGoTP9O6Hb6Ypls</string>
 

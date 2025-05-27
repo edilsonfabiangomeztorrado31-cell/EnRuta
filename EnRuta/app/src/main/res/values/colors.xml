@@ -7,5 +7,5 @@
     <color name="white_hueso">#968E8E</color>
     <color name="naranja">#F28C28</color>
     <color name="transparente">#00000000</color>
-
+    <color name="verde_aceptar">#4CAF50</color> <!-- un verde Google bonito -->
 </resources>

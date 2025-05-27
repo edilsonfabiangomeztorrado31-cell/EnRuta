@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="2dp"
-    card_view:cardCornerRadius="12dp"
-    card_view:cardElevation="6dp">
+    xmlns:app="http://schemas.android.com/tools"
+    android:layout_margin="8dp"
+    card_view:cardCornerRadius="16dp"
+    card_view:cardElevation="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,86 +14,130 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:divider="?android:attr/dividerHorizontal"
+            android:dividerPadding="8dp"
+            android:orientation="vertical"
+            android:showDividers="middle">
 
-            <!-- Este LinearLayout es EL único hijo del ScrollView -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/tvOrigen"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Origen: Bogotá"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
+                <!-- Ícono de ruta a la izquierda -->
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/destino"
+                    android:tint="@color/blue_logo" />
 
-                <TextView
-                    android:id="@+id/tvDestino"
-                    android:layout_width="match_parent"
+                <!-- Contenedor de Origen y Destino -->
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Destino: Medellín"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvTipoCarga"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tipo de carga: Refrigerada"
-                    android:textSize="16sp"
-                    android:textColor="#000000"/>
+                    <!-- Origen -->
+                    <TextView
+                        android:id="@+id/tvOrigen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Origen: Bogotá"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/tvPeso"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Peso: 1500 kg"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
+                    <!-- Destino -->
+                    <TextView
+                        android:id="@+id/tvDestino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Destino: Medellín"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/tvPrecio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Precio: $1.200.000"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvFecha"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Fecha: 2025-05-20"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
             </LinearLayout>
-        </ScrollView>
 
-        <!-- El botón queda fuera del ScrollView -->
-        <Button
-            android:id="@+id/btnTomarFlete"
+            <!-- Tipo de Carga -->
+            <TextView
+                android:id="@+id/tvTipoCarga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo de carga: Refrigerada"
+                android:textColor="#333333"
+                android:textSize="16sp" />
+
+            <!-- Peso -->
+            <TextView
+                android:id="@+id/tvPeso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Peso: 1500 kg"
+                android:textColor="#333333"
+                android:textSize="16sp" />
+
+            <!-- Precio -->
+            <TextView
+                android:id="@+id/tvPrecio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Precio: $1.200.000"
+                android:textColor="@color/verde_aceptar"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Fecha -->
+            <TextView
+                android:id="@+id/tvFecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fecha: 2025-05-20"
+                android:textColor="#555555"
+                android:textSize="16sp" />
+
+            <!-- Ver ruta -->
+            <TextView
+                android:id="@+id/tvVerRuta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/direccion_mapa"
+                android:textColor="@color/verde_aceptar"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tomar Flete"
-            android:backgroundTint="@color/naranja"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"/>
-    </LinearLayout>
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnTomarFlete"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_button_verde"
+                android:text="Tomar Flete"
+                android:textColor="@color/white"
+                android:backgroundTint="@null"
+                app:backgroundTint="@null"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
 </androidx.cardview.widget.CardView>

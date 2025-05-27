@@ -38,6 +38,11 @@ public class DetalleFletePresenter implements DetalleFleteContract.DetalleFleteP
     }
 
     @Override
+    public void onVerRutaClick(Freight freight) {
+        view.irAMostrarMapa(freight);
+    }
+
+    @Override
     public void obtenerFletePorId(String id) {
         model.cargarFletePorId(id, new DetalleFleteContract.DetalleFleteModel.FleteCallback() {
             @Override
