@@ -49,18 +49,12 @@ public class DetalleFreightAdapter extends RecyclerView.Adapter<DetalleFreightAd
     @Override
     public void onBindViewHolder(@NonNull DetalleFreightAdapter.DetalleFreightViewHolder holder, int position) {
         Freight freight = lista.get(position);
-        holder.origen.setText(boldLabel("Origen: " , freight.getUbicacionOrigen()));
-        holder.destino.setText(boldLabel("Destino: " , freight. getUbicacionDestino()));
-        holder.tipoCarga.setText(boldLabel("Tipo de carga: " , freight.getTipoCarga()));
-        holder.precio.setText(boldLabel("Peso en toneladas: " , freight.getPrecio()));
-        holder.peso.setText(boldLabel("Precio: " , freight.getPeso()));
-        holder.fecha.setText(boldLabel("Fecha de registro: " , freight.getFechaRegistro()));
-
-        holder.verRuta.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onVerRutaClick(freight);
-            }
-        });
+        holder.origen.setText( freight.getUbicacionOrigen());
+        holder.destino.setText(freight. getUbicacionDestino());
+        holder.tipoCarga.setText( freight.getTipoCarga());
+        holder.precio.setText(freight.getPrecio());
+        holder.peso.setText( freight.getPeso());
+        holder.fecha.setText(freight.getFechaRegistro());
 
         holder.btnTomarFlete.setOnClickListener(v -> {
             if (listener != null) {
@@ -76,7 +70,7 @@ public class DetalleFreightAdapter extends RecyclerView.Adapter<DetalleFreightAd
 
 
     static class DetalleFreightViewHolder extends RecyclerView.ViewHolder {
-        TextView origen, destino, tipoCarga, precio, peso, fecha, verRuta;
+        TextView origen, destino, tipoCarga, precio, peso, fecha;
         Button btnTomarFlete;
 
         public DetalleFreightViewHolder(@NonNull View itemView) {
@@ -87,8 +81,7 @@ public class DetalleFreightAdapter extends RecyclerView.Adapter<DetalleFreightAd
             precio = itemView.findViewById(R.id.tvPrecio);
             peso = itemView.findViewById(R.id.tvPeso);
             fecha = itemView.findViewById(R.id.tvFecha);
-            verRuta = itemView.findViewById(R.id.tvVerRuta);
-            btnTomarFlete = itemView.findViewById(R.id.btnTomarFlete);
+            btnTomarFlete = itemView.findViewById(R.id.btnTakeFreight);
         }
     }
 }

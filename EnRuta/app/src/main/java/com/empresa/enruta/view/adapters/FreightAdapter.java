@@ -48,12 +48,19 @@ public class FreightAdapter extends RecyclerView.Adapter<FreightAdapter.FreightV
         Freight freight = lista.get(position);
         holder.origen.setText(boldLabel("Origen: " , freight.getUbicacionOrigen()));
         holder.destino.setText(boldLabel("Destino: " , freight. getUbicacionDestino()));
-        holder.tipoCarga.setText(boldLabel("Tipo de carga: " , freight.getTipoCarga()));
-        holder.precio.setText(boldLabel("Peso en toneladas: " , freight.getPrecio()));
-        holder.peso.setText(boldLabel("Precio: " , freight.getPeso()));
-        holder.fecha.setText(boldLabel("Fecha de registro: " , freight.getFechaRegistro()));
+       // holder.tipoCarga.setText(boldLabel("Tipo de carga: " , freight.getTipoCarga()));
+        holder.precio.setText(boldLabel("Precio: ", "$"  + freight.getPrecio()));
+        //holder.peso.setText(boldLabel("Peso: " , freight.getPeso()));
+        //holder.fecha.setText(boldLabel("Fecha de registro: " , freight.getFechaRegistro()));
 
-        holder.btnDetalle.setOnClickListener(v -> {
+//        holder.btnDetalle.setOnClickListener(v -> {
+//            if (listener != null) {
+//                Log.i("DEBUG_FLETE_DETALLE", "ID seleccionado: " + freight.getId());
+//                listener.onDetalleClick(freight);
+//            }
+//        });
+
+        holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
                 Log.i("DEBUG_FLETE_DETALLE", "ID seleccionado: " + freight.getId());
                 listener.onDetalleClick(freight);
@@ -74,11 +81,11 @@ public class FreightAdapter extends RecyclerView.Adapter<FreightAdapter.FreightV
             super(itemView);
             origen = itemView.findViewById(R.id.tvOrigen);
             destino = itemView.findViewById(R.id.tvDestino);
-            tipoCarga = itemView.findViewById(R.id.tvTipoCarga);
+           // tipoCarga = itemView.findViewById(R.id.tvTipoCarga);
             precio = itemView.findViewById(R.id.tvPrecio);
-            peso = itemView.findViewById(R.id.tvPeso);
-            fecha = itemView.findViewById(R.id.tvFecha);
-            btnDetalle = itemView.findViewById(R.id.btnDetalleFlete);
+           // peso = itemView.findViewById(R.id.tvPeso);
+           // fecha = itemView.findViewById(R.id.tvFecha);
+            //btnDetalle = itemView.findViewById(R.id.btnDetalleFlete);
         }
     }
 }

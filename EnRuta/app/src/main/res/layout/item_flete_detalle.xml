@@ -1,143 +1,290 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/tools"
     android:layout_margin="8dp"
     card_view:cardCornerRadius="16dp"
     card_view:cardElevation="8dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <ScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="?android:attr/dividerHorizontal"
-            android:dividerPadding="8dp"
-            android:orientation="vertical"
-            android:showDividers="middle">
+            android:fillViewport="true"
+            android:background="#FFFFFF">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="8dp">
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:fontFamily="sans-serif">
 
-                <!-- Ícono de ruta a la izquierda -->
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="12dp"
-                    android:src="@drawable/destino"
-                    android:tint="@color/blue_logo" />
-
-                <!-- Contenedor de Origen y Destino -->
+                <!-- Header -->
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="8dp">
 
-                    <!-- Origen -->
                     <TextView
-                        android:id="@+id/tvOrigen"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:text="Origen: Bogotá"
-                        android:textColor="#000000"
-                        android:textSize="16sp" />
-
-                    <!-- Destino -->
-                    <TextView
-                        android:id="@+id/tvDestino"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Destino: Medellín"
-                        android:textColor="#000000"
-                        android:textSize="16sp" />
-
+                        android:layout_weight="1"
+                        android:text="Detalle flete"
+                        android:textColor="#121416"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:paddingEnd="24dp"/>
                 </LinearLayout>
 
+                <!-- Origin -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Origen"
+                    android:textColor="#121416"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp"
+                    android:background="#FFFFFF"
+                    android:minHeight="72dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="#f1f2f4"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_location_on"
+                        android:layout_marginEnd="12dp" />
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tvOrigen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Origen: Bogotá"
+                            android:textColor="#000000"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Destination -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Destino"
+                    android:textColor="#121416"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp"
+                    android:background="#FFFFFF"
+                    android:minHeight="72dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="#f1f2f4"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_flag"
+                        android:layout_marginEnd="12dp" />
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvDestino"
+                            android:text="Springfield, USA"
+                            android:textSize="16sp"
+                            android:textColor="#121416"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Freight Info -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Información flete"
+                    android:textColor="#121416"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="8dp"/>
+
+                <!-- Info items -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#dde1e3" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tipo de carga"
+                        android:textColor="#6a7681"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvTipoCarga"
+                        android:text="General Goods"
+                        android:textColor="#121416"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#dde1e3" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Precio"
+                        android:textColor="#6a7681"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvPrecio"
+                        android:text="$1,200"
+                        android:textColor="#121416"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#dde1e3" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Peso en toneladas"
+                        android:textColor="#6a7681"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvPeso"
+                        android:text="5,000 lbs"
+                        android:textColor="#121416"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#dde1e3" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fecha de registro"
+                        android:textColor="#6a7681"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvFecha"
+                        android:text="July 26, 2024"
+                        android:textColor="#121416"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Notes -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nota"
+                    android:textColor="#121416"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="4dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Artículos frágiles: manipúlelos con cuidado. Contacte al destinatario 30 minutos antes de su llegada."
+                    android:textColor="#121416"
+                    android:textSize="16sp"
+                    android:paddingBottom="24dp" />
+
+                <!-- Button -->
+                <Button
+                    android:id="@+id/btnTakeFreight"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Tomar Flete"
+                    android:backgroundTint="#c0d6ec"
+                    android:textColor="#121417"
+                    android:textStyle="bold" />
+
             </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
 
-            <!-- Tipo de Carga -->
-            <TextView
-                android:id="@+id/tvTipoCarga"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tipo de carga: Refrigerada"
-                android:textColor="#333333"
-                android:textSize="16sp" />
-
-            <!-- Peso -->
-            <TextView
-                android:id="@+id/tvPeso"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Peso: 1500 kg"
-                android:textColor="#333333"
-                android:textSize="16sp" />
-
-            <!-- Precio -->
-            <TextView
-                android:id="@+id/tvPrecio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Precio: $1.200.000"
-                android:textColor="@color/verde_aceptar"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <!-- Fecha -->
-            <TextView
-                android:id="@+id/tvFecha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Fecha: 2025-05-20"
-                android:textColor="#555555"
-                android:textSize="16sp" />
-
-            <!-- Ver ruta -->
-            <TextView
-                android:id="@+id/tvVerRuta"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="@string/direccion_mapa"
-                android:textColor="@color/verde_aceptar"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btnTomarFlete"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_button_verde"
-                android:text="Tomar Flete"
-                android:textColor="@color/white"
-                android:backgroundTint="@null"
-                app:backgroundTint="@null"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-</androidx.cardview.widget.CardView>

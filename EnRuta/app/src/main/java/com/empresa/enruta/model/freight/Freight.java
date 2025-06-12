@@ -13,6 +13,7 @@ public class Freight {
     private String precio;
     private String peso;
     private String fechaRegistro;
+    private String estado;
 
     public Freight() {
     }
@@ -81,5 +82,13 @@ public class Freight {
 
     public void setFechaRegistro(String fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

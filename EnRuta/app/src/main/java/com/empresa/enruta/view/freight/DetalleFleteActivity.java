@@ -3,6 +3,8 @@ package com.empresa.enruta.view.freight;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import android.content.pm.PackageManager;
@@ -21,6 +23,8 @@ import com.empresa.enruta.view.adapters.FreightAdapter;
 import com.empresa.enruta.view.conveyor.ConveyorMenuView;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
 import android.location.Geocoder;
 import android.location.Address;
 
@@ -41,6 +45,7 @@ public class DetalleFleteActivity extends ConveyorMenuView implements DetalleFle
 
         recyclerView = findViewById(R.id.recyclerViewDetalleFletes);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         presenter = new DetalleFletePresenter(this, new DetalleFleteModelImpl());
@@ -95,9 +100,18 @@ public class DetalleFleteActivity extends ConveyorMenuView implements DetalleFle
 
     @Override
     public void irATomarFlete(Freight freight) {
-//        Intent intent = new Intent(this, TomarFleteActivity.class);
-//        intent.putExtra("freight_id", freight.getId());
-//        startActivity(intent);
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        View view = getLayoutInflater().inflate(R.layout.bottom_sheet_tomar_flete, null);
+        bottomSheetDialog.setContentView(view);
+
+        Button btnVerRuta = view.findViewById(R.id.button_view_route);
+        btnVerRuta.setOnClickListener(v -> {
+            // Aquí invocas la lógica para abrir Google Maps
+           // abrirGoogleMaps(freight.getUbicacionDestino());
+            irAMostrarMapa(freight);
+            bottomSheetDialog.dismiss();
+        });
+        bottomSheetDialog.show(); // <-- ¡NECESARIO PARA QUE SE MUESTRE!
     }
 
     @Override

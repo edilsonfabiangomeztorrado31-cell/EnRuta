@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#E5E7EB">
+    android:layout_height="match_parent">
 
     <include
         layout="@layout/conveyor_background_login" />
@@ -11,118 +10,87 @@
     <!-- Card de login superpuesto parcialmente sobre la imagen -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="80dp"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="6dp">
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@android:color/white"
+        android:foregroundGravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
 
-        <ScrollView
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fillViewport="true"
             android:background="#FFFFFF">
 
-            <LinearLayout
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Registro de Transportador"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#121516"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp"
-                android:background="#FFFFFF">
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/tvTitulo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Registro de Transportador"
-                    android:textColor="@color/blue_logo"
-                    android:textSize="24sp"
-                    android:layout_marginBottom="16dp"
-                    android:gravity="center"
-                    android:textStyle="bold"/>
-                <!-- Botones de pestaña -->
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp">
+            <TextView
+                android:text="Nombre "
+                android:textSize="16sp"
+                android:textColor="#121516"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:hint="Ingrese nombre"
+                android:id="@+id/etNombreConveyor"
+                android:background="#F1F2F4"
+                android:padding="12dp"
+                android:textColor="#121516"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+            <TextView
+                android:text="Apellidos"
+                android:textSize="16sp"
+                android:textColor="#121516"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:hint="Ingrese apellidos"
+                android:id="@+id/etApellido"
+                android:background="#F1F2F4"
+                android:padding="12dp"
+                android:textColor="#121516"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
 
-                        <Button
-                            android:id="@+id/btnIniciarSesionSwift"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Iniciar sesión"
-                            android:backgroundTint="@null"
-                            android:textColor="@color/white"
-                            app:backgroundTint="@null"
-                            android:translationZ="8dp"
-                            android:elevation="8dp"/>
-
-                        <Button
-                            android:id="@+id/btnRegistrarseSwift"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:backgroundTint="@null"
-                            android:text="Registrarse"
-                            android:textColor="@color/white"
-                            app:backgroundTint="@null" />
-
-
-                    </LinearLayout>
-                </FrameLayout>
-
-                <!-- Input contacto -->
-                <EditText
-                    android:id="@+id/etNombreConveyor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:hint="Nombre"
-                    android:background="@android:color/transparent"
-                    android:inputType="text"
-                    android:textColor="@color/white_hueso"
-                    android:paddingBottom="8dp"
-                    android:layout_marginBottom="0dp"
-                    android:drawablePadding="8dp"
-                    android:textSize="15sp"/>
-
-                <!-- Línea separadora -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E0E0E0"
-                    android:layout_below="@id/etNombreEmpresa"
-                    android:layout_marginTop="0dp"/>
-
-                <!-- Input contraseña -->
-                <EditText
-                    android:id="@+id/etApellido"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:hint="Apellidos"
-                    android:background="@android:color/transparent"
-                    android:inputType="text"
-                    android:textColor="@color/white_hueso"
-                    android:paddingBottom="8dp"
-                    android:layout_marginBottom="0dp"
-                    android:drawablePadding="8dp"
-                    android:textSize="15sp"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E0E0E0" />
-
+            <TextView
+                android:text="Tipo de documento"
+                android:textSize="16sp"
+                android:textColor="#121516"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
                 <Spinner
                     android:id="@+id/spinnerTipoDocumento"
                     android:layout_width="match_parent"
@@ -142,101 +110,109 @@
                     android:layout_height="1dp"
                     android:background="#E0E0E0" />
 
-                <EditText
-                    android:id="@+id/etNumDocumento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:hint="Numero documentación"
-                    android:background="@android:color/transparent"
-                    android:inputType="phone"
-                    android:textColor="@color/white_hueso"
-                    android:paddingBottom="0dp"
-                    android:layout_marginBottom="8dp"
-                    android:drawablePadding="8dp"
-                    android:textSize="15sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Numero de documentacion"
+                android:textColor="#121516"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E0E0E0" />
+            <EditText
+                android:hint="Ingrese numero de documento"
+                android:id="@+id/etNumDocumento"
+                android:background="#F1F2F4"
+                android:padding="12dp"
+                android:textColor="#121516"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
 
-                <EditText
-                    android:id="@+id/etCorreo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:hint="Correo"
-                    android:background="@android:color/transparent"
-                    android:inputType="text"
-                    android:textColor="@color/white_hueso"
-                    android:paddingBottom="0dp"
-                    android:layout_marginBottom="8dp"
-                    android:drawablePadding="8dp"
-                    android:textSize="15sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Gmail"
+                android:textColor="#121516"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E0E0E0" />
+            <EditText
+                android:hint="Ingrese correo electronico"
+                android:id="@+id/etCorreo"
+                android:background="#F1F2F4"
+                android:padding="12dp"
+                android:textColor="#121516"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
 
-                <EditText
-                    android:id="@+id/etContacto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:hint="Contacto"
-                    android:background="@android:color/transparent"
-                    android:inputType="phone"
-                    android:textColor="@color/white_hueso"
-                    android:paddingBottom="0dp"
-                    android:layout_marginBottom="8dp"
-                    android:drawablePadding="8dp"
-                    android:textSize="15sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Contacto"
+                android:textColor="#121516"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E0E0E0" />
+            <EditText
+                android:hint="Ingrese numero de documento"
+                android:id="@+id/etContacto"
+                android:background="#F1F2F4"
+                android:padding="12dp"
+                android:textColor="#121516"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
 
-                <EditText
-                    android:id="@+id/etPlaca"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:hint="Placa"
-                    android:background="@android:color/transparent"
-                    android:inputType="text"
-                    android:textColor="@color/white_hueso"
-                    android:paddingBottom="0dp"
-                    android:layout_marginBottom="8dp"
-                    android:drawablePadding="8dp"
-                    android:textSize="15sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Placa"
+                android:textColor="#121516"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E0E0E0" />
-                <!-- Botón iniciar sesión -->
+            <EditText
+                android:hint="Ingrese numero de placa"
+                android:id="@+id/etPlaca"
+                android:background="#F1F2F4"
+                android:padding="12dp"
+                android:textColor="#121516"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
 
-                <EditText
-                    android:id="@+id/etCapacidadToneladas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:hint="Capacidad toneladas"
-                    android:background="@android:color/transparent"
-                    android:inputType="phone"
-                    android:textColor="@color/white_hueso"
-                    android:paddingBottom="0dp"
-                    android:layout_marginBottom="8dp"
-                    android:drawablePadding="8dp"
-                    android:textSize="15sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Peso"
+                android:textColor="#121516"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E0E0E0" />
+            <EditText
+                android:hint="Ingrese el peso en toneladas"
+                android:id="@+id/etCapacidadToneladas"
+                android:background="#F1F2F4"
+                android:padding="12dp"
+                android:textColor="#121516"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Tipo de vehículo"
+                android:textColor="#121516"
+                android:textSize="16sp"
+                android:textStyle="bold" />
                 <Spinner
                     android:id="@+id/spinnerTipoVehiculo"
                     android:layout_width="match_parent"
@@ -256,25 +232,26 @@
                     android:layout_height="1dp"
                     android:background="#E0E0E0" />
 
-                <EditText
-                    android:id="@+id/etPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:hint="Contraseña"
-                    android:background="@android:color/transparent"
-                    android:inputType="textPassword"
-                    android:textColor="@color/white_hueso"
-                    android:paddingBottom="0dp"
-                    android:layout_marginBottom="8dp"
-                    android:drawablePadding="8dp"
-                    android:textSize="15sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Contraseña"
+                android:textColor="#121516"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E0E0E0" />
-                <LinearLayout
+            <EditText
+                android:hint="Ingrese su contraseña"
+                android:id="@+id/etPasssword"
+                android:background="#F1F2F4"
+                android:padding="12dp"
+                android:textColor="#121516"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -316,4 +293,4 @@
         </ScrollView>
     </androidx.cardview.widget.CardView>
 
-</merge>
+</androidx.constraintlayout.widget.ConstraintLayout>

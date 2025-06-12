@@ -10,18 +10,4 @@ public class HomeEmpresaPresenter implements HomeEmpresaContract.HomeEmpresaPres
         this.view = view;
     }
 
-    @Override
-    public void onGestionFleteClicked() {
-        view.irAGestionFletes();
-    }
-
-    @Override
-    public void onTransAsignadoClicked() {
-        view.irATransportadoresAsignados();
-    }
-
-    @Override
-    public void onVerHistorialClicked() {
-        view.irAVerHistorial();
-    }
 }

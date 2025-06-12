@@ -1,98 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="2dp"
-    card_view:cardCornerRadius="12dp"
-    card_view:cardElevation="6dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:fillViewport="true">
+        <!-- Información del flete -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <!-- Este LinearLayout es EL único hijo del ScrollView -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvTituloFlete"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="Flete #12345"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#111418" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_location_on"
+                    android:contentDescription="Origen" />
 
                 <TextView
                     android:id="@+id/tvOrigen"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Origen: Bogotá"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
+                    android:text="Bogotá"
+                    android:textColor="#60758A"
+                    android:textSize="14sp"
+                    android:layout_marginStart="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_flag"
+                    android:contentDescription="Destino" />
 
                 <TextView
                     android:id="@+id/tvDestino"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Destino: Medellín"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
-
-                <TextView
-                    android:id="@+id/tvTipoCarga"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tipo de carga: Refrigerada"
-                    android:textSize="16sp"
-                    android:textColor="#000000"/>
-
-                <TextView
-                    android:id="@+id/tvPeso"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Peso: 1500 kg"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
-
-                <TextView
-                    android:id="@+id/tvPrecio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Precio: $1.200.000"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
-
-                <TextView
-                    android:id="@+id/tvFecha"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Fecha: 2025-05-20"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
+                    android:text="Medellín"
+                    android:textColor="#60758A"
+                    android:textSize="14sp"
+                    android:layout_marginStart="4dp" />
             </LinearLayout>
-        </ScrollView>
+        </LinearLayout>
 
-        <!-- El botón queda fuera del ScrollView -->
-        <Button
-            android:id="@+id/btnDetalleFlete"
-            android:layout_width="match_parent"
+        <!-- Precio -->
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Detalle Flete"
-            android:backgroundTint="@color/naranja"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"/>
-    </LinearLayout>
+            android:orientation="vertical"
+            android:gravity="center">
 
+<!--            <ImageView-->
+<!--                android:layout_width="24dp"-->
+<!--                android:layout_height="24dp"-->
+<!--                android:src="@drawable/ic_attach_money"-->
+<!--                android:tint="#4CAF50"-->
+<!--                android:contentDescription="Precio" />-->
+
+            <TextView
+                android:id="@+id/tvPrecio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$500.000"
+                android:textColor="#111418"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

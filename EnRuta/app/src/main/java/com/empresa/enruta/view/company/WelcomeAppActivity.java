@@ -2,6 +2,7 @@ package com.empresa.enruta.view.company;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,8 +22,8 @@ public class WelcomeAppActivity extends AppCompatActivity implements WelcomeAppC
 
         presenter = new WelcomeAppPresenter(this);
 
-        findViewById(R.id.btnEmpresa).setOnClickListener(v -> presenter.onEmpresaSeleccionada());
-        findViewById(R.id.btnTransportador).setOnClickListener(v -> presenter.onTransportadorSeleccionado());
+        findViewById(R.id.businessButton).setOnClickListener(v -> presenter.onEmpresaSeleccionada());
+        findViewById(R.id.carrierButton).setOnClickListener(v -> presenter.onTransportadorSeleccionado());
     }
 
     @Override

@@ -73,115 +73,125 @@
             android:gravity="center"
             android:textStyle="bold"/>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
+        <TextView
+            android:text="Ubicacion origen "
+            android:textSize="16sp"
+            android:textColor="#121516"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/edit_text"
-            android:padding="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp">
-
-          <EditText
-              android:id="@+id/etUbicacionOrigen"
-              android:layout_width="0dp"
-              android:layout_weight="1"
-              android:layout_height="wrap_content"
-              android:hint="Ubicación origen"
-              android:inputType="text"
-              android:padding="12dp"
-              android:background="@android:color/transparent"
-              android:focusable="false"
-              android:clickable="true"
-              android:cursorVisible="false"
-              android:drawablePadding="8dp"
-              android:singleLine="true"/>
-
-          <ImageView
-              android:id="@+id/ivChevron"
-              android:src="@drawable/ic_chevron_right"
-              android:layout_width="25dp"
-              android:layout_height="25dp"
-              android:layout_marginStart="8dp"/>
-        </LinearLayout>
-
-      <LinearLayout
-          android:orientation="horizontal"
-          android:gravity="center_vertical"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:background="@android:drawable/edit_text"
-          android:padding="4dp"
-          android:layout_marginTop="16dp"
-          android:layout_marginBottom="8dp">
-        <!-- Ubicación Destino -->
+            android:layout_height="wrap_content"/>
         <EditText
-            android:id="@+id/etUbicacionDestino"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:hint="Ubicación destino"
-            android:inputType="text"
+            android:hint="Ingrese el origen del flete"
+            android:id="@+id/etUbicacionOrigen"
+            android:background="#F1F2F4"
             android:padding="12dp"
-            android:background="@android:color/transparent"
+            android:textColor="#121516"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"
+            android:inputType="text"
             android:focusable="false"
             android:clickable="true"
             android:cursorVisible="false"
-            android:drawablePadding="8dp"
             android:singleLine="true"/>
 
-        <ImageView
-            android:id="@+id/ivChevronDestino"
-            android:src="@drawable/ic_chevron_right"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="8dp"/>
-      </LinearLayout>
-
-        <!-- Tipo de carga -->
-        <EditText
-            android:id="@+id/etTipoCarga"
+        <TextView
+            android:text="Ubicacion destino "
+            android:textSize="16sp"
+            android:textColor="#121516"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tipo de carga"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Ingrese el destino del flete"
+            android:id="@+id/etUbicacionDestino"
+            android:background="#F1F2F4"
+            android:padding="12dp"
+            android:textColor="#121516"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"
             android:inputType="text"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginTop="16dp"/>
-
-        <!-- Precio -->
-        <EditText
-            android:id="@+id/etPrecio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Precio"
-            android:inputType="numberDecimal"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginTop="8dp"/>
-
-        <!-- Peso -->
-        <EditText
-            android:id="@+id/etPeso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Peso en toneladas"
-            android:inputType="numberDecimal"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginTop="8dp"/>
-
-        <!-- Fecha de registro -->
-        <EditText
-            android:id="@+id/etFechaRegistro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Fecha de registro"
             android:focusable="false"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:singleLine="true"/>
+        <TextView
+            android:text="Tipo de carga"
+            android:textSize="16sp"
+            android:textColor="#121516"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Ingrese el tipo de carga"
+            android:id="@+id/etTipoCarga"
+            android:background="#F1F2F4"
             android:padding="12dp"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginTop="8dp"/>
+            android:textColor="#121516"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:text="Precio flete"
+            android:textSize="16sp"
+            android:textColor="#121516"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Ingrese el precio del flete"
+            android:id="@+id/etPrecio"
+            android:background="#F1F2F4"
+            android:padding="12dp"
+            android:textColor="#121516"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:text="Peso flete"
+            android:textSize="16sp"
+            android:textColor="#121516"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Ingrese el peso en toneladas"
+            android:id="@+id/etPeso"
+            android:inputType="numberDecimal"
+            android:background="#F1F2F4"
+            android:padding="12dp"
+            android:textColor="#121516"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:text="Fecha registro"
+            android:textSize="16sp"
+            android:textColor="#121516"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Ingrese fecha de registro"
+            android:id="@+id/etFechaRegistro"
+            android:inputType="numberDecimal"
+            android:background="#F1F2F4"
+            android:padding="12dp"
+            android:textColor="#121516"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -195,7 +205,7 @@
               android:layout_width="180dp"
               android:layout_height="wrap_content"
               android:background="@drawable/bg_button_azul"
-              android:text="Registrarse"
+              android:text="Registrar"
               android:textColor="@color/white"
               android:backgroundTint="@null"
               app:backgroundTint="@null"/>
