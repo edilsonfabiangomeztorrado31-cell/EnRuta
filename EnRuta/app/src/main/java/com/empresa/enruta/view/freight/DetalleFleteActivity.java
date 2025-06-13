@@ -24,6 +24,8 @@ import com.empresa.enruta.view.conveyor.ConveyorMenuView;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import android.location.Geocoder;
 import android.location.Address;
@@ -95,7 +97,12 @@ public class DetalleFleteActivity extends ConveyorMenuView implements DetalleFle
 
     @Override
     public void mostrarMensaje(String mensaje) {
-
+        if (this != null) { // Ensure context is not null before showing Toast
+            Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+        } else {
+            // Handle the case where context is null, e.g., log an error
+            System.err.println("Error: Context is null, cannot display Toast message.");
+        }
     }
 
     @Override
@@ -111,8 +118,22 @@ public class DetalleFleteActivity extends ConveyorMenuView implements DetalleFle
             irAMostrarMapa(freight);
             bottomSheetDialog.dismiss();
         });
+
+        marcarFleteComoTomado(freight.getId());
+
         bottomSheetDialog.show(); // <-- ¡NECESARIO PARA QUE SE MUESTRE!
     }
+
+    public void marcarFleteComoTomado(String freightId) {
+        DatabaseReference fleteRef = FirebaseDatabase.getInstance()
+                .getReference("register_freight")
+                .child(freightId);
+
+        fleteRef.child("estado").setValue("tomado")
+                .addOnSuccessListener(aVoid -> mostrarMensaje("Flete marcado como tomado"))
+                .addOnFailureListener(e -> mostrarMensaje("Error al actualizar el estado: " + e.getMessage()));
+    }
+
 
     @Override
     public void irAMostrarMapa(Freight freight) {

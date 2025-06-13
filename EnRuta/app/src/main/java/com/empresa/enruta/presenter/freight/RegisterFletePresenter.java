@@ -172,6 +172,7 @@ public class RegisterFletePresenter implements RegisterFleteContract.Presenter {
         fleteData.put("precio", precio.trim());
         fleteData.put("peso", peso.trim());
         fleteData.put("fechaRegistro", fechaRegistro.trim());
+        fleteData.put("estado", "disponible");
 
         // Guardar el flete con un ID único generado por push()
         database.push().setValue(fleteData)

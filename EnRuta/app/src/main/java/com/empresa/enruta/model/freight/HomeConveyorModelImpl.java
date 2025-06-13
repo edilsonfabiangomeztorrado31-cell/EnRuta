@@ -18,7 +18,8 @@ public class HomeConveyorModelImpl implements HomeConveyorContract.HomeConveyorM
 
     @Override
     public void cargarFletes(FleteCallback callback) {
-        database.addListenerForSingleValueEvent(new ValueEventListener() {
+        database.orderByChild("estado").equalTo("tomado") // Solo fletes disponibles
+                .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 List<Freight> lista = new ArrayList<>();
