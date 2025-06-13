@@ -39,7 +39,10 @@
             android:name=".view.freight.DetalleFleteActivity"
             android:exported="false" />
         <activity
-            android:name=".view.conveyor.HomeConveyorActivity"
+            android:name=".view.conveyor.LoginConveyorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.company.LoginEmpresaActivity"
             android:exported="true"
             android:label="">
             <intent-filter>

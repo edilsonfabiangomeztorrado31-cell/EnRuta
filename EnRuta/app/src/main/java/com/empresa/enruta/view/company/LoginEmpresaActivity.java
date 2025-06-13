@@ -33,27 +33,27 @@ public class LoginEmpresaActivity extends AppCompatActivity implements LoginEmpr
         btnRegistrarse = findViewById(R.id.btnRegistrarseSwift);
         btnLoginConveyor = findViewById(R.id.btnLoginConveyor);
 
-        btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_azul_left);
-        btnRegistrarse.setBackgroundResource(R.drawable.bg_button_naranja_right);
-
-        btnIniciarSesion.setOnClickListener(v -> {
-            btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_azul_left);
-            btnRegistrarse.setBackgroundResource(R.drawable.bg_button_naranja_right);
-        });
-
-        btnRegistrarse.setOnClickListener(v -> {
-            btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_naranja_left);
-            btnRegistrarse.setBackgroundResource(R.drawable.bg_button_azul_right);
-
-            Intent intent = new Intent(LoginEmpresaActivity.this, RegisterEmpresaActivity.class);
-            startActivity(intent); // <-- te faltaba este startActivity
-        });
-
-        btnLoginConveyor.setOnClickListener(v -> {
-            String correo = etCorreo.getText().toString().trim();
-            String contraseña = etContraseña.getText().toString().trim();
-            presenter.login(correo, contraseña);
-        });
+//        btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_azul_left);
+//        btnRegistrarse.setBackgroundResource(R.drawable.bg_button_naranja_right);
+//
+//        btnIniciarSesion.setOnClickListener(v -> {
+//            btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_azul_left);
+//            btnRegistrarse.setBackgroundResource(R.drawable.bg_button_naranja_right);
+//        });
+//
+//        btnRegistrarse.setOnClickListener(v -> {
+//            btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_naranja_left);
+//            btnRegistrarse.setBackgroundResource(R.drawable.bg_button_azul_right);
+//
+//            Intent intent = new Intent(LoginEmpresaActivity.this, RegisterEmpresaActivity.class);
+//            startActivity(intent); // <-- te faltaba este startActivity
+//        });
+//
+//        btnLoginConveyor.setOnClickListener(v -> {
+//            String correo = etCorreo.getText().toString().trim();
+//            String contraseña = etContraseña.getText().toString().trim();
+//            presenter.login(correo, contraseña);
+//        });
     }
 
     @Override

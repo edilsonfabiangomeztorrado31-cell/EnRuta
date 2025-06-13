@@ -21,6 +21,7 @@ import com.empresa.enruta.presenter.freight.DetalleFletePresenter;
 import com.empresa.enruta.view.adapters.DetalleFreightAdapter;
 import com.empresa.enruta.view.adapters.FreightAdapter;
 import com.empresa.enruta.view.conveyor.ConveyorMenuView;
+import com.empresa.enruta.view.conveyor.HomeConveyorActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -112,6 +113,8 @@ public class DetalleFleteActivity extends ConveyorMenuView implements DetalleFle
         bottomSheetDialog.setContentView(view);
 
         Button btnVerRuta = view.findViewById(R.id.button_view_route);
+        Button btnAceptar = view.findViewById(R.id.button_accept);
+
         btnVerRuta.setOnClickListener(v -> {
             // Aquí invocas la lógica para abrir Google Maps
            // abrirGoogleMaps(freight.getUbicacionDestino());
@@ -119,9 +122,16 @@ public class DetalleFleteActivity extends ConveyorMenuView implements DetalleFle
             bottomSheetDialog.dismiss();
         });
 
-        marcarFleteComoTomado(freight.getId());
+        btnAceptar.setOnClickListener(v -> {
+            bottomSheetDialog.dismiss();  // Cierra el diálogo
+            Intent intent = new Intent(this, HomeConveyorActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK); // Opcional, limpia el stack
+            startActivity(intent);
+            finish(); // Cierra la actividad actual si es necesario
+        });
 
-        bottomSheetDialog.show(); // <-- ¡NECESARIO PARA QUE SE MUESTRE!
+        marcarFleteComoTomado(freight.getId());
+        bottomSheetDialog.show();
     }
 
     public void marcarFleteComoTomado(String freightId) {

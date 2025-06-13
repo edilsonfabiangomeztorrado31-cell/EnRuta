@@ -1,6 +1,7 @@
 package com.empresa.enruta.model.company;
 
 public class Company {
+    private String id;
     private String nombre;
     private String nit;
     private String correo;
@@ -11,17 +12,29 @@ public class Company {
     private String tipoCarga;
     private String contraseña;
 
-    public Company(String nombre, String nit, String correo, String representante, String tipoEmpresa, String direccion, String contacto, String tipoCarga, String contraseña) {
+    public Company() {
+    }
+
+    public Company(String nombre, String id, String nit, String correo, String representante, String contacto, String tipoCarga,
+                   String contraseña, String direccion, String tipoEmpresa) {
         this.nombre = nombre;
+        this.id = id;
         this.nit = nit;
         this.correo = correo;
         this.representante = representante;
-        this.tipoEmpresa = tipoEmpresa;
-        this.direccion = direccion;
         this.contacto = contacto;
         this.tipoCarga = tipoCarga;
         this.contraseña = contraseña;
+        this.direccion = direccion;
+        this.tipoEmpresa = tipoEmpresa;
+    }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {

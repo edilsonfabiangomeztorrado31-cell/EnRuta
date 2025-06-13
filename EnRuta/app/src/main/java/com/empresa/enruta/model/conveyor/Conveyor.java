@@ -1,6 +1,8 @@
 package com.empresa.enruta.model.conveyor;
 
 public class Conveyor {
+
+    private String id;
     private String nombre;
     private String apellido;
     private String tipoDocumento;
@@ -12,17 +14,27 @@ public class Conveyor {
     private String tipoVehiculo;
     private String contraseña;
 
-    public Conveyor(String nombre, String apellido, String tipoDocumento, String contraseña, String tipoVehiculo, String capacidadToneladas, String placa, String contacto, String correo, String numeroDocumento) {
+    public Conveyor(String id, String nombre, String apellido, String tipoDocumento, String numeroDocumento, String correo,
+                    String placa, String contacto, String capacidadToneladas, String tipoVehiculo, String contraseña) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipoDocumento = tipoDocumento;
-        this.contraseña = contraseña;
-        this.tipoVehiculo = tipoVehiculo;
-        this.capacidadToneladas = capacidadToneladas;
+        this.numeroDocumento = numeroDocumento;
+        this.correo = correo;
         this.placa = placa;
         this.contacto = contacto;
-        this.correo = correo;
-        this.numeroDocumento = numeroDocumento;
+        this.capacidadToneladas = capacidadToneladas;
+        this.tipoVehiculo = tipoVehiculo;
+        this.contraseña = contraseña;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {
