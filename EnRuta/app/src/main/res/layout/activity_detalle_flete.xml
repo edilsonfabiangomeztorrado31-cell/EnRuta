@@ -5,11 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fillViewport="true">
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -27,7 +22,5 @@
                             android:layout_marginTop="60dp"/>
 
                     </LinearLayout>
-                    <!--                </androidx.cardview.widget.CardView>-->
-            </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

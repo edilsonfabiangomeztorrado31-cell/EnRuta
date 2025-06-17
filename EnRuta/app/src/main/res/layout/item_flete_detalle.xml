@@ -7,12 +7,16 @@
     card_view:cardCornerRadius="16dp"
     card_view:cardElevation="8dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fillViewport="true"
             android:background="#FFFFFF">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -283,8 +287,7 @@
                     android:backgroundTint="#c0d6ec"
                     android:textColor="#121417"
                     android:textStyle="bold" />
-
-            </LinearLayout>
-        </ScrollView>
+    </LinearLayout>
+</ScrollView>
+    </LinearLayout>
     </androidx.cardview.widget.CardView>
-

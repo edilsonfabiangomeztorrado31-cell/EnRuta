@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+import android.os.Handler;
+import android.widget.TextView;
+
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +34,12 @@ public class HomeConveyorActivity extends ConveyorMenuView implements HomeConvey
     private HomeConveyorPresenter presenter;
     private ConveyorPresenterImpl present;
     private ConveyorContract.ConveyorPresenter presenterConveyor;
+    private TextView tvMensajeFletes;
+    private Handler handler = new Handler();
+    private int mensajeIndex = 0;
+    private String[] mensajes;
+
+    private boolean hiloActivo = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +67,17 @@ public class HomeConveyorActivity extends ConveyorMenuView implements HomeConvey
             return;
         }
 
+        mensajes = new String[]{
+                getString(R.string.mensaje_flete_1),
+                getString(R.string.mensaje_flete_2),
+                getString(R.string.mensaje_flete_3),
+                getString(R.string.mensaje_flete_4),
+                getString(R.string.mensaje_flete_5)
+        };
+
+
+        tvMensajeFletes = findViewById(R.id.tvMensajeFletes);
+        iniciarHiloMensajes();
 
     }
 
@@ -90,5 +110,43 @@ public class HomeConveyorActivity extends ConveyorMenuView implements HomeConvey
         for (Conveyor c : lista) {
             Log.d("DEBUG_CONVEYOR", "Transportador cargado: " + c.getNombre() + " (ID: " + c.getId() + ")");
         }
+    }
+
+    private void iniciarHiloMensajes() {
+        Thread hilo = new Thread(() -> {
+            while (hiloActivo) {
+                try {
+                    Thread.sleep(10000); // Espera 5 segundos
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                runOnUiThread(() -> {
+                    mensajeIndex = (mensajeIndex + 1) % mensajes.length;
+
+                    // Animación de fade out
+                    tvMensajeFletes.animate()
+                            .alpha(0f)
+                            .setDuration(500)
+                            .withEndAction(() -> {
+                                // Cambiar mensaje y aplicar fade in
+                                tvMensajeFletes.setText(mensajes[mensajeIndex]);
+                                tvMensajeFletes.animate()
+                                        .alpha(1f)
+                                        .setDuration(500)
+                                        .start();
+                            }).start();
+                });
+            }
+        });
+
+        hilo.start();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        hiloActivo = false; // para detener el hilo cuando se cierra la actividad
     }
 }

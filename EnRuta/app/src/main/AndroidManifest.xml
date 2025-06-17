@@ -42,7 +42,7 @@
             android:name=".view.conveyor.LoginConveyorActivity"
             android:exported="false" />
         <activity
-            android:name=".view.company.LoginEmpresaActivity"
+            android:name=".view.conveyor.HomeConveyorActivity"
             android:exported="true"
             android:label="">
             <intent-filter>

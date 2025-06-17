@@ -16,4 +16,11 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <string name="mensaje_flete_1">Estos son los fletes disponibles cerca de ti. ¡Tómalos y ponte en ruta!</string>
+    <string name="mensaje_flete_2">¡Recuerda verificar el peso y el destino antes de aceptar un flete!</string>
+    <string name="mensaje_flete_3">Mantén tu vehículo en buen estado para asegurar tus viajes.</string>
+    <string name="mensaje_flete_4">Activa tus notificaciones para no perder nuevas oportunidades.</string>
+    <string name="mensaje_flete_5">¡Viaja seguro y puntual para construir tu reputación!</string>
+
+
 </resources>

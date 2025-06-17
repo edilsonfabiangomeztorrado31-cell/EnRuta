@@ -6,178 +6,203 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_freight_content"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="70dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
         app:cardBackgroundColor="@android:color/white"
         android:foregroundGravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:background="#FFFFFF"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <!-- Header -->
         <LinearLayout
+            android:orientation="vertical"
+            android:background="#FFFFFF"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            android:gravity="center_vertical"
-            android:background="#FFFFFF">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Fletes Disponibles"
-                android:textSize="18sp"
-                android:textColor="#111418"
-                android:gravity="center"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            android:gravity="center_vertical"
-            android:background="#FFFFFF">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Estos son los fletes disponibles cerca de ti. ¡Tómalos y ponte en ruta!"
-                android:textSize="18sp"
-                android:textColor="#111418"
-                android:gravity="center"
-                android:textStyle="italic" />
-        </LinearLayout>
-
-        <!-- Buscador -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:orientation="horizontal"
-            android:background="#FFFFFF">
-
-            <com.google.android.material.textfield.TextInputLayout
+            <!-- Header -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:startIconDrawable="@android:drawable/ic_menu_search"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeColor="#D1D5DB"
-                app:boxCornerRadiusTopStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusBottomEnd="12dp">
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:background="#FFFFFF">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etBuscarCiudad"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fletes Disponibles"
+                    android:textSize="18sp"
+                    android:textColor="#111418"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMensajeFletes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="#D1D5DB"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="#1A3A5D"> <!-- Aquí el color oscuro -->
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Buscar fletes"
-                    android:textColor="#111418" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:orientation="horizontal"
+                    android:padding="12dp"
+                    android:gravity="center_vertical">
 
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_info"
+                        android:tint="#FFFFFF"/> <!-- Blanco para que resalte -->
+
+                    <TextView
+                        android:id="@+id/tvMensajeFletes"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Estos son los fletes disponibles cerca de ti. ¡Tómalos y ponte en ruta!"
+                        android:textSize="16sp"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="italic" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <!-- Buscador -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:startIconDrawable="@android:drawable/ic_menu_search"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="#D1D5DB"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etBuscarCiudad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Buscar fletes"
+                        android:textColor="#111418" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!-- Filtros -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:id="@+id/btnOrigen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="Origen"
+                        android:textColor="#111418"
+                        app:icon="@drawable/ic_arrow_drop_down"
+                        app:iconGravity="textEnd"
+                        app:iconPadding="4dp"
+                        app:strokeColor="#D1D5DB"
+                        app:strokeWidth="1dp"
+                        app:cornerRadius="16dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:id="@+id/btnDestino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="Destino"
+                        android:textColor="#111418"
+                        app:icon="@drawable/ic_arrow_drop_down"
+                        app:iconGravity="textEnd"
+                        app:iconPadding="4dp"
+                        app:strokeColor="#D1D5DB"
+                        app:strokeWidth="1dp"
+                        app:cornerRadius="16dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:id="@+id/btnPrecio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="Precio"
+                        android:textColor="#111418"
+                        app:icon="@drawable/ic_arrow_drop_down"
+                        app:iconGravity="textEnd"
+                        app:iconPadding="4dp"
+                        app:strokeColor="#D1D5DB"
+                        app:strokeWidth="1dp"
+                        app:cornerRadius="16dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:id="@+id/btnPeso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="Peso toneladas"
+                        android:textColor="#111418"
+                        app:icon="@drawable/ic_arrow_drop_down"
+                        app:iconGravity="textEnd"
+                        app:iconPadding="4dp"
+                        app:strokeColor="#D1D5DB"
+                        app:strokeWidth="1dp"
+                        app:cornerRadius="16dp" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true"
+                android:background="#FFFFFF">
+            <!-- Lista de Fletes -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewFletes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp" />
+            </ScrollView>
         </LinearLayout>
 
-        <!-- Filtros -->
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:scrollbars="none">
-
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp">
-
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:id="@+id/btnOrigen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="Origen"
-                    android:textColor="#111418"
-                    app:icon="@drawable/ic_arrow_drop_down"
-                    app:iconGravity="textEnd"
-                    app:iconPadding="4dp"
-                    app:strokeColor="#D1D5DB"
-                    app:strokeWidth="1dp"
-                    app:cornerRadius="16dp" />
-
-
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:id="@+id/btnDestino"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="Destino"
-                    android:textColor="#111418"
-                    app:icon="@drawable/ic_arrow_drop_down"
-                    app:iconGravity="textEnd"
-                    app:iconPadding="4dp"
-                    app:strokeColor="#D1D5DB"
-                    app:strokeWidth="1dp"
-                    app:cornerRadius="16dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:id="@+id/btnPrecio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="Precio"
-                    android:textColor="#111418"
-                    app:icon="@drawable/ic_arrow_drop_down"
-                    app:iconGravity="textEnd"
-                    app:iconPadding="4dp"
-                    app:strokeColor="#D1D5DB"
-                    app:strokeWidth="1dp"
-                    app:cornerRadius="16dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:id="@+id/btnPeso"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="Peso toneladas"
-                    android:textColor="#111418"
-                    app:icon="@drawable/ic_arrow_drop_down"
-                    app:iconGravity="textEnd"
-                    app:iconPadding="4dp"
-                    app:strokeColor="#D1D5DB"
-                    app:strokeWidth="1dp"
-                    app:cornerRadius="16dp" />
-            </LinearLayout>
-        </HorizontalScrollView>
-
-        <!-- Lista de Fletes -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewFletes"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="8dp" />
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
