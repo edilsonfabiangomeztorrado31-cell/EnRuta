@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Encabezado -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_arrow_left"
+            android:contentDescription="@string/back"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Ubicación Actual"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+        <!-- Espacio en blanco -->
+        <Space
+            android:layout_width="48dp"
+            android:layout_height="1dp"/>
+    </LinearLayout>
+
+    <!-- Contenedor del mapa simulado -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_placeholder_mapa"
+        android:foregroundGravity="top|center">
+
+        <!-- Input de búsqueda -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_input_white"
+            android:orientation="horizontal"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_search"
+                android:contentDescription="@string/search"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="Buscar ubicación"
+                android:background="@android:color/transparent"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:paddingStart="8dp"/>
+        </LinearLayout>
+
+        <!-- Botones flotantes -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:gravity="center_horizontal">
+
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_circle_white"
+                android:src="@drawable/ic_plus"
+                android:contentDescription="@string/plus"
+                android:elevation="4dp"/>
+
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_circle_white"
+                android:src="@drawable/ic_minus"
+                android:contentDescription="@string/minus"
+                android:elevation="4dp"
+                android:layout_marginTop="4dp"/>
+
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_circle_white"
+                android:src="@drawable/ic_navigation"
+                android:contentDescription="@string/navigation"
+                android:elevation="4dp"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvUbicacionActual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ubicación no disponible"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_margin="16dp"/>
+
+</LinearLayout>

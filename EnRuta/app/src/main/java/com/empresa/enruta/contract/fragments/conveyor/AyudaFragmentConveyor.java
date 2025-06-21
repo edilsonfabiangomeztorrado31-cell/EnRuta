@@ -18,7 +18,7 @@ public class AyudaFragmentConveyor extends Fragment {
     public View onCreateView (@Nullable LayoutInflater inflater,
                               @Nullable ViewGroup container,
                               @Nullable Bundle savedInstatnceState){
-        return inflater.inflate(R.layout.fragment_ayuda, container, false);
+        return inflater.inflate(R.layout.fragment_ayuda_conveyor, container, false);
 
     }
 }

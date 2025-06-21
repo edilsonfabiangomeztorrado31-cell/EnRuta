@@ -18,7 +18,7 @@ public class UbicacionFragmentConveyor extends Fragment {
     public View onCreateView (@Nullable LayoutInflater inflater,
                               @Nullable ViewGroup container,
                               @Nullable Bundle savedInstatnceState){
-        return inflater.inflate(R.layout.fragment_ubicacion, container, false);
+        return inflater.inflate(R.layout.fragment_ubicacion_conveyor, container, false);
 
     }
 }

@@ -18,7 +18,7 @@ public class ConfiguracionFragmentCoveyor extends Fragment {
     public View onCreateView (@Nullable LayoutInflater inflater,
                               @Nullable ViewGroup container,
                               @Nullable Bundle savedInstatnceState){
-        return inflater.inflate(R.layout.fragment_configuracion, container, false);
+        return inflater.inflate(R.layout.fragment_configuracion_conveyor, container, false);
 
     }
 }

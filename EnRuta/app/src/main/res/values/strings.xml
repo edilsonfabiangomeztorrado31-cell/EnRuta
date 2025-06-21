@@ -22,5 +22,12 @@
     <string name="mensaje_flete_4">Activa tus notificaciones para no perder nuevas oportunidades.</string>
     <string name="mensaje_flete_5">¡Viaja seguro y puntual para construir tu reputación!</string>
 
+        <string name="back">Atrás</string>
+        <string name="search">Buscar</string>
+        <string name="plus">Aumentar zoom</string>
+        <string name="minus">Disminuir zoom</string>
+        <string name="navigation">Mi ubicación</string>
+
+
 
 </resources>

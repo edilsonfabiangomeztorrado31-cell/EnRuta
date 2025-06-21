@@ -18,7 +18,7 @@ public class SoporteFragmentConveyor extends Fragment {
     public View onCreateView (@Nullable LayoutInflater inflater,
                               @Nullable ViewGroup container,
                               @Nullable Bundle savedInstatnceState){
-        return inflater.inflate(R.layout.fragment_soporte, container, false);
+        return inflater.inflate(R.layout.fragment_soporte_conveyor, container, false);
 
     }
 }

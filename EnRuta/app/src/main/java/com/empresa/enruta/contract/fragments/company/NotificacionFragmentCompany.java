@@ -18,7 +18,7 @@ public class NotificacionFragmentCompany extends Fragment {
     public View onCreateView (@Nullable LayoutInflater inflater,
                               @Nullable ViewGroup container,
                               @Nullable Bundle savedInstatnceState){
-        return inflater.inflate(R.layout.fragment_notificaciones, container, false);
+        return inflater.inflate(R.layout.fragment_notificaciones_company, container, false);
 
     }
 }

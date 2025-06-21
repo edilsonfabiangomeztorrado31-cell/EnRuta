@@ -39,9 +39,10 @@ public class MenuPresenterImplCompany implements MenuContract.MenuPresenter {
             selectedFragment = new ConfiguracionFragmentCompany();
         } else if (itemId == R.id.nav_ayuda_company) {
             selectedFragment = new AyudaFragmentCompany();
-        } else if (itemId == R.id.nav_soporte_company) {
-            selectedFragment = new SoporteFragmentCompany();
         }
+//        else if (itemId == R.id.nav_soporte_company) {
+//            selectedFragment = new SoporteFragmentCompany();
+//        }
 
         Log.d("Menu", "Seleccionaste: " + itemId);
 
