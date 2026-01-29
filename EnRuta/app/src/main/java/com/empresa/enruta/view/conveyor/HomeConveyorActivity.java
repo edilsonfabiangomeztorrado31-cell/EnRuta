@@ -12,14 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.empresa.enruta.R;
-import com.empresa.enruta.contract.company.MenuContract;
 import com.empresa.enruta.contract.conveyor.ConveyorContract;
 import com.empresa.enruta.contract.conveyor.HomeConveyorContract;
 import com.empresa.enruta.model.conveyor.Conveyor;
-import com.empresa.enruta.model.conveyor.ConveyorModelImpl;
 import com.empresa.enruta.model.freight.Freight;
-import com.empresa.enruta.model.freight.HomeConveyorModelImpl;
-import com.empresa.enruta.presenter.conveyor.ConveyorPresenterImpl;
+import com.empresa.enruta.model.freight.ConveyorModelImpl;
+import com.empresa.enruta.presenter.conveyor.ConveyorPresenter;
 import com.empresa.enruta.presenter.conveyor.HomeConveyorPresenter;
 import com.empresa.enruta.view.adapters.FreightAdapter;
 import com.empresa.enruta.view.freight.DetalleFleteActivity;
@@ -32,7 +30,7 @@ public class HomeConveyorActivity extends ConveyorMenuView implements HomeConvey
     private RecyclerView recyclerView;
     private FreightAdapter adapter;
     private HomeConveyorPresenter presenter;
-    private ConveyorPresenterImpl present;
+    private ConveyorPresenter present;
     private ConveyorContract.ConveyorPresenter presenterConveyor;
     private TextView tvMensajeFletes;
     private Handler handler = new Handler();
@@ -50,11 +48,11 @@ public class HomeConveyorActivity extends ConveyorMenuView implements HomeConvey
         recyclerView = findViewById(R.id.recyclerViewFletes);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        presenter = new HomeConveyorPresenter(this, new HomeConveyorModelImpl());
+        presenter = new HomeConveyorPresenter(this, new ConveyorModelImpl());
 
         presenter.obtenerFletes();
 
-        present = new ConveyorPresenterImpl(this, new ConveyorModelImpl());
+        present = new ConveyorPresenter(this, new com.empresa.enruta.model.conveyor.ConveyorModelImpl());
 
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();

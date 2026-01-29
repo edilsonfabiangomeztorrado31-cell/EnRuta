@@ -5,12 +5,12 @@ import com.empresa.enruta.model.company.Company;
 
 import java.util.List;
 
-public class CompanyPresenterImpl implements CompanyContract.CompanyPresenter {
+public class CompanyPresenter implements CompanyContract.CompanyPresenter {
 
     private final CompanyContract.CompanyView view;
     private final CompanyContract.CompanyModel model;
 
-    public CompanyPresenterImpl(CompanyContract.CompanyView view, CompanyContract.CompanyModel model) {
+    public CompanyPresenter(CompanyContract.CompanyView view, CompanyContract.CompanyModel model) {
         this.view = view;
         this.model = model;
     }

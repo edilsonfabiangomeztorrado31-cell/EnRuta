@@ -8,11 +8,11 @@ import com.google.firebase.database.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeConveyorModelImpl implements HomeConveyorContract.HomeConveyorModel {
+public class ConveyorModelImpl implements HomeConveyorContract.HomeConveyorModel {
 
     private DatabaseReference database;
 
-    public HomeConveyorModelImpl() {
+    public ConveyorModelImpl() {
         database = FirebaseDatabase.getInstance().getReference("register_freight");
     }
 

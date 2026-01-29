@@ -41,6 +41,10 @@
         <activity
             android:name=".view.conveyor.LoginConveyorActivity"
             android:exported="false" />
+         <activity
+            android:name=".view.freight.RegisterFletesActivity"
+            android:exported="false" />
+
         <activity
             android:name=".view.company.HomeCompanyActivity"
             android:exported="true"

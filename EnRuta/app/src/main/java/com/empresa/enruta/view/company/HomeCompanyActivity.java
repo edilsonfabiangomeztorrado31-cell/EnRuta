@@ -11,20 +11,16 @@ import android.widget.Toast;
 
 import com.empresa.enruta.R;
 import com.empresa.enruta.contract.company.CompanyContract;
-import com.empresa.enruta.contract.company.HomeEmpresaContract;
 import com.empresa.enruta.model.company.Company;
 import com.empresa.enruta.model.company.CompanyModelImpl;
-import com.empresa.enruta.presenter.company.CompanyPresenterImpl;
-import com.empresa.enruta.presenter.company.HomeEmpresaPresenter;
-import com.empresa.enruta.presenter.company.MenuPresenterImplCompany;
+import com.empresa.enruta.presenter.company.CompanyPresenter;
 import com.empresa.enruta.view.freight.RegisterFletesActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.List;
 
-public class HomeCompanyActivity extends CompanyMenuView implements HomeEmpresaContract.HomeEmpresaView,  CompanyContract.CompanyView {
+public class HomeCompanyActivity extends CompanyMenuView implements CompanyContract.CompanyView {
 
-    private HomeEmpresaContract.HomeEmpresaPresenter presenterHome;
     private CompanyContract.CompanyPresenter presenter;
 
     @Override
@@ -32,9 +28,7 @@ public class HomeCompanyActivity extends CompanyMenuView implements HomeEmpresaC
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_home_company, findViewById(R.id.fragment_container_company));
 
-        presenterHome = new HomeEmpresaPresenter(this);
-
-        presenter = new CompanyPresenterImpl(this, new CompanyModelImpl());
+        presenter = new CompanyPresenter(this, new CompanyModelImpl());
         presenter.obtenerEmpresas();
 
         ImageButton btnAdd = findViewById(R.id.button_add);
