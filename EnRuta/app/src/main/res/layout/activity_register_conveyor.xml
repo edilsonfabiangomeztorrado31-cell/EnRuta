@@ -245,7 +245,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:hint="Identificación"
-                        app:startIconDrawable="@drawable/ic_id">
+                        app:startIconDrawable="@drawable/person">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etIdentificacion"
