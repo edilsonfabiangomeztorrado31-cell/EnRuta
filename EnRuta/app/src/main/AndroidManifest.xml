@@ -47,6 +47,18 @@
 
         <activity
             android:name=".view.company.HomeCompanyActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".view.conveyor.RegisterCoveyorActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".view.company.RegisterEmpresaActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".view.company.WelcomeAppActivity"
             android:exported="true"
             android:label="">
             <intent-filter>

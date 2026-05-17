@@ -22,8 +22,8 @@ public class WelcomeAppActivity extends AppCompatActivity implements WelcomeAppC
 
         presenter = new WelcomeAppPresenter(this);
 
-        findViewById(R.id.businessButton).setOnClickListener(v -> presenter.onEmpresaSeleccionada());
-        findViewById(R.id.carrierButton).setOnClickListener(v -> presenter.onTransportadorSeleccionado());
+        findViewById(R.id.btnPublicarCarga).setOnClickListener(v -> presenter.onEmpresaSeleccionada());
+        findViewById(R.id.btnBuscarFletes).setOnClickListener(v -> presenter.onTransportadorSeleccionado());
     }
 
     @Override
