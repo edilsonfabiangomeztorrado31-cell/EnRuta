@@ -24,11 +24,11 @@ public class RegisterEmpresaPresenter implements RegisterEmpresaContract.Present
     }
 
     @Override
-    public void registrarEmpresa(String nombre, String nit, String correo, String representante,
-                                 String tipoEmpresa, String direccion, String contacto, String contraseña) {
+    public void registrarEmpresa(String nombre, String nit, String personaContacto, String telefono,
+                                 String correo, String password, String confirmarPassword) {
 
-        if (nombre.isEmpty() || nit.isEmpty() || correo.isEmpty() || representante.isEmpty() ||
-        tipoEmpresa.isEmpty() || direccion.isEmpty() || contacto.isEmpty() || contraseña.isEmpty()) {
+        if (nombre.isEmpty() || nit.isEmpty() || personaContacto.isEmpty() || telefono.isEmpty() ||
+        correo.isEmpty() || password.isEmpty() || confirmarPassword.isEmpty()) {
             view.mostrarMensaje("Todos los campos son obligatorios");
             return;
         }
@@ -50,24 +50,6 @@ public class RegisterEmpresaPresenter implements RegisterEmpresaContract.Present
             return;
         }
 
-        // Validar longitud de representante
-        if (representante.length() < 3 || representante.length() > 50) {
-            view.mostrarMensaje("El representante debe tener entre 3 y 50 caracteres.");
-            return;
-        }
-
-        // Validar longitud de tipo de empresa
-        if (tipoEmpresa.length() < 3 || tipoEmpresa.length() > 100) {
-            view.mostrarMensaje("El tipo de empresa debe tener entre 3 y 100 caracteres.");
-            return;
-        }
-
-        // Validar longitud de dirección
-        if (direccion.length() < 5 || direccion.length() > 100) {
-            view.mostrarMensaje("La dirección debe tener entre 5 y 100 caracteres.");
-            return;
-        }
-
         // Validar nombre
         if (!nombre.equals(nombre.trim())) {
             view.mostrarMensaje("El nombre no debe tener espacios al inicio o al final.");
@@ -78,43 +60,7 @@ public class RegisterEmpresaPresenter implements RegisterEmpresaContract.Present
             return;
         }
 
-        // Validar representante
-        if (!representante.equals(representante.trim())) {
-            view.mostrarMensaje("El representante no debe tener espacios al inicio o al final.");
-            return;
-        }
-        if (!representante.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+(\\s[a-zA-ZáéíóúÁÉÍÓÚñÑ]+)*$")) {
-            view.mostrarMensaje("El nombre del representante solo debe contener letras y espacios entre palabras.");
-            return;
-        }
-
-        // Validar tipoEmpresa
-        if (!tipoEmpresa.equals(tipoEmpresa.trim())) {
-            view.mostrarMensaje("El tipo de empresa no debe tener espacios al inicio o al final.");
-            return;
-        }
-        if (tipoEmpresa.length() < 2) {
-            view.mostrarMensaje("Debes especificar un tipo de empresa válido");
-            return;
-        }
-
-        // Validar dirección
-        if (!direccion.equals(direccion.trim())) {
-            view.mostrarMensaje("La dirección no debe tener espacios al inicio o al final.");
-            return;
-        }
-        if (!direccion.matches("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ#\\.\\-\\/,\\s]+") || direccion.length() < 5) {
-            view.mostrarMensaje("La dirección contiene caracteres no permitidos o es demasiado corta");
-            return;
-        }
-
-        // Validar contacto
-        if (!contacto.matches("\\d{7,10}")) {
-            view.mostrarMensaje("El número de contacto debe ser numérico y tener entre 7 y 10 dígitos");
-            return;
-        }
-
-        auth.createUserWithEmailAndPassword(correo, contraseña)
+        auth.createUserWithEmailAndPassword(correo, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = auth.getCurrentUser();
@@ -123,11 +69,11 @@ public class RegisterEmpresaPresenter implements RegisterEmpresaContract.Present
                         Map<String, Object> empresaData = new HashMap<>();
                         empresaData.put("nombre", nombre.trim());
                         empresaData.put("nit", nit.trim());
+                        empresaData.put("personaContacto", personaContacto.trim());
+                        empresaData.put("telefono", telefono.trim());
                         empresaData.put("correo", correo.trim());
-                        empresaData.put("representante", representante.trim());
-                        empresaData.put("tipoEmpresa", tipoEmpresa.trim());
-                        empresaData.put("direccion", direccion.trim());
-                        empresaData.put("contacto", contacto.trim());
+                        empresaData.put("password", password.trim());
+                        empresaData.put("confirmarPassword", confirmarPassword.trim());
 
                         database.child(uid).setValue(empresaData)
                                 .addOnSuccessListener(aVoid -> {

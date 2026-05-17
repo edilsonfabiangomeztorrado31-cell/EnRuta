@@ -1,282 +1,364 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E5E7EB">
+    android:background="#F7F9FC"
+    tools:context=".view.company.RegisterEmpresaActivity">
 
-    <include
-        layout="@layout/company_background_login" />
-
-    <!-- Card de login superpuesto parcialmente sobre la imagen -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardLogin"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="100dp"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="6dp">
+        android:orientation="vertical">
 
-        <ScrollView
+        <!-- HEADER -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fillViewport="true"
-            android:background="#FFFFFF">
+            android:layout_height="70dp"
+            android:background="#FFFFFF"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FleteDirecto"
+                android:textColor="#002046"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- CONTENIDO -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp"
-            android:background="#FFFFFF">
+            android:padding="20dp">
 
-            <TextView
-                android:id="@+id/tvTitulo"
+            <!-- CARD PRINCIPAL -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Registro de Empresa"
-                android:textColor="@color/blue_logo"
-                android:textSize="24sp"
-                android:layout_marginBottom="16dp"
-                android:gravity="center"
-                android:textStyle="bold"/>
-            <!-- Botones de pestaña -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="8dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="#FFFFFF">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/btnIniciarSesionSwift"
-                        android:layout_width="0dp"
+                    <!-- PANEL SUPERIOR -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:background="#002046"
+                        android:orientation="vertical"
+                        android:padding="24dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Impulsa tu logística al siguiente nivel."
+                            android:textColor="#FFFFFF"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Gestiona flotas, rastrea pedidos y optimiza rutas con la plataforma empresarial líder."
+                            android:textColor="#D6E3FF"
+                            android:textSize="15sp" />
+
+                        <!-- BENEFICIOS -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="✔ Verificación de seguridad industrial"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="✔ Reportes y paneles en tiempo real"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="✔ Soporte prioritario 24/7"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- FORMULARIO -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Iniciar sesión"
-                        android:backgroundTint="@null"
-                        android:textColor="@color/white"
-                        app:backgroundTint="@null"
-                        android:translationZ="8dp"
-                        android:elevation="8dp"/>
+                        android:orientation="vertical"
+                        android:padding="24dp">
 
-                    <Button
-                        android:id="@+id/btnRegistrarseSwift"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@null"
-                        android:text="Registrarse"
-                        android:textColor="@color/white"
-                        app:backgroundTint="@null" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Registro de Empresa"
+                            android:textColor="#002046"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Completa los datos de tu organización."
+                            android:textColor="#666666"
+                            android:textSize="14sp" />
+
+                        <!-- NOMBRE EMPRESA -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:text="Nombre de la Empresa"
+                            android:textColor="#44474E"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            app:startIconDrawable="@drawable/business">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etNombreEmpresa"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Ej. Transportes Global S.A."
+                                android:padding="14dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- NIT -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:text="NIT / Tax ID"
+                            android:textColor="#44474E"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            app:startIconDrawable="@drawable/badge">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etNit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="123456789-0"
+                                android:padding="14dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- CONTACTO -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:text="Persona de Contacto"
+                            android:textColor="#44474E"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            app:startIconDrawable="@drawable/person">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etPersonContacto"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Nombre completo"
+                                android:padding="14dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- TELEFONO -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:text="Teléfono"
+                            android:textColor="#44474E"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            app:startIconDrawable="@drawable/ic_phone">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etTelefono"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="+57 300 000 0000"
+                                android:inputType="phone"
+                                android:padding="14dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- EMAIL -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:text="Email Corporativo"
+                            android:textColor="#44474E"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            app:startIconDrawable="@drawable/mail">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="admin@empresa.com"
+                                android:inputType="textEmailAddress"
+                                android:padding="14dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- PASSWORD -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:text="Contraseña"
+                            android:textColor="#44474E"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            app:endIconMode="password_toggle"
+                            app:startIconDrawable="@drawable/ic_lock">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etPassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="••••••••"
+                                android:inputType="textPassword"
+                                android:padding="14dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="La contraseña debe tener al menos 8 caracteres."
+                            android:textColor="#666666"
+                            android:textSize="12sp" />
+
+                        <!-- CONFIRM PASSWORD -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:text="Confirmar Contraseña"
+                            android:textColor="#44474E"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            app:endIconMode="password_toggle"
+                            app:startIconDrawable="@drawable/ic_lock">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etConfirmPassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="••••••••"
+                                android:inputType="textPassword"
+                                android:padding="14dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- CHECKBOX -->
+                        <CheckBox
+                            android:id="@+id/checkTerms"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="Acepto los Términos y Condiciones y la Política de Privacidad."
+                            android:textColor="#44474E" />
+
+                        <!-- BOTON -->
+                        <Button
+                            android:id="@+id/btnRegistrarseEmpresa"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginTop="24dp"
+                            android:backgroundTint="#002046"
+                            android:text="Crear Cuenta de Empresa"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <!-- LOGIN -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="24dp"
+                            android:text="¿Ya tengo cuenta? Iniciar Sesión"
+                            android:textColor="#002046"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
-            </FrameLayout>
 
-            <!-- Input contacto -->
-            <EditText
-                android:id="@+id/etNombreEmpresa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Nombre de empresa"
-                android:background="@android:color/transparent"
-                android:inputType="text"
-                android:textColor="@color/white_hueso"
-                android:paddingBottom="8dp"
-                android:layout_marginBottom="0dp"
-                android:drawablePadding="8dp"
-                android:textSize="15sp"/>
+            </androidx.cardview.widget.CardView>
 
-            <!-- Línea separadora -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E0E0E0"
-                android:layout_below="@id/etNombreEmpresa"
-                android:layout_marginTop="0dp"/>
-
-            <!-- Input contraseña -->
-            <EditText
-                android:id="@+id/etNit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="NIT"
-                android:background="@android:color/transparent"
-                android:inputType="phone"
-                android:textColor="@color/white_hueso"
-                android:paddingBottom="8dp"
-                android:layout_marginBottom="0dp"
-                android:drawablePadding="8dp"
-                android:textSize="15sp"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E0E0E0" />
-
-            <EditText
-                android:id="@+id/etCorreo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Correo"
-                android:background="@android:color/transparent"
-                android:inputType="text"
-                android:textColor="@color/white_hueso"
-                android:paddingBottom="8dp"
-                android:layout_marginBottom="0dp"
-                android:drawablePadding="8dp"
-                android:textSize="15sp"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E0E0E0" />
-
-            <EditText
-                android:id="@+id/etRepresentanteLlegal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Representante legal"
-                android:background="@android:color/transparent"
-                android:inputType="text"
-                android:textColor="@color/white_hueso"
-                android:paddingBottom="0dp"
-                android:layout_marginBottom="8dp"
-                android:drawablePadding="8dp"
-                android:textSize="15sp"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E0E0E0" />
-
-            <EditText
-                android:id="@+id/etTipoEmpresa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Tipo de empresa"
-                android:background="@android:color/transparent"
-                android:inputType="text"
-                android:textColor="@color/white_hueso"
-                android:paddingBottom="0dp"
-                android:layout_marginBottom="8dp"
-                android:drawablePadding="8dp"
-                android:textSize="15sp"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E0E0E0" />
-
-            <EditText
-                android:id="@+id/etDirrecion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Dirección"
-                android:background="@android:color/transparent"
-                android:inputType="text"
-                android:textColor="@color/white_hueso"
-                android:paddingBottom="0dp"
-                android:layout_marginBottom="8dp"
-                android:drawablePadding="8dp"
-                android:textSize="15sp"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E0E0E0" />
-
-            <EditText
-                android:id="@+id/etContacto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Contacto"
-                android:background="@android:color/transparent"
-                android:inputType="phone"
-                android:textColor="@color/white_hueso"
-                android:paddingBottom="0dp"
-                android:layout_marginBottom="8dp"
-                android:drawablePadding="8dp"
-                android:textSize="15sp"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E0E0E0" />
-            <!-- Botón iniciar sesión -->
-
-            <EditText
-                android:id="@+id/etPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Contraseña"
-                android:background="@android:color/transparent"
-                android:inputType="textPassword"
-                android:textColor="@color/white_hueso"
-                android:paddingBottom="0dp"
-                android:layout_marginBottom="8dp"
-                android:drawablePadding="8dp"
-                android:textSize="15sp"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E0E0E0" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginTop="10dp">
-
-                <Button
-                    android:id="@+id/btnRegistrarseEmpresa"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_button_azul"
-                    android:text="Registrarse"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@null"
-                    app:backgroundTint="@null"/>
-
-            </LinearLayout>
-
-            <!-- Texto olvidaste contraseña -->
-            <TextView
-                android:id="@+id/tvTienesCuenta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:text="¿Ya tienes cuenta?"
-                android:textColor="@color/blue_logo"
-                android:textSize="15sp" />
-            <TextView
-                android:id="@+id/tvRecuperar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/iniciaSeccion"
-                android:textColor="@color/blue_logo"
-                android:textSize="15sp"
-                android:layout_below="@id/tvTienesCuenta" />
         </LinearLayout>
-        </ScrollView>
-    </androidx.cardview.widget.CardView>
 
-</merge>
+        <!-- FOOTER -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="© 2026 FleteDirecto - Soluciones Logísticas."
+            android:textColor="#74777F"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

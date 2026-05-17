@@ -34,10 +34,10 @@ public class RegisterConveyorPresenter implements RegisterConveyorContract.Prese
 
     @Override
     public void registrarConveyor(String nombre, String apellido, String tipoDocumento, String numeroDocumento, String correo, String contacto,
-                                  String placa, String capacidadToneladas, String tipoVehiculo, String contraseña) {
+                                  String placa, String capacidadToneladas, String tipoVehiculo, String password, String confirmarPassword) {
 
         if (nombre.isEmpty() || apellido.isEmpty() || tipoDocumento.isEmpty() || numeroDocumento.isEmpty() || correo.isEmpty() ||contacto.isEmpty() ||
-        placa.isEmpty() || capacidadToneladas.isEmpty() || tipoVehiculo.isEmpty() || contraseña.isEmpty()) {
+        placa.isEmpty() || capacidadToneladas.isEmpty() || tipoVehiculo.isEmpty() || password.isEmpty() || confirmarPassword.isEmpty()) {
             view.mostrarMensaje("Todos los campos son obligatorios");
         }
 
@@ -77,17 +77,12 @@ public class RegisterConveyorPresenter implements RegisterConveyorContract.Prese
             return;
         }
 
-        if (!placa.matches("^[A-Z]{3}\\d{3}$")) { // Ejemplo de placa colombiana estándar
-            view.mostrarMensaje("Placa no válida. Formato esperado: ABC123");
-            return;
-        }
-
         if (!capacidadToneladas.matches("^\\d{1,2}(\\.\\d{1,2})?$")) {
             view.mostrarMensaje("Capacidad no válida. Usa solo números (ej. 5 o 7.5)");
             return;
         }
 
-        auth.createUserWithEmailAndPassword(correo, contraseña)
+        auth.createUserWithEmailAndPassword(correo, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = auth.getCurrentUser();
@@ -103,7 +98,8 @@ public class RegisterConveyorPresenter implements RegisterConveyorContract.Prese
                         empresaData.put("placa", placa.trim());
                         empresaData.put("capacidadToneladas", capacidadToneladas.trim());
                         empresaData.put("tipoVehiculo", tipoVehiculo.trim());
-                        empresaData.put("password", contraseña.trim());
+                        empresaData.put("password", password.trim());
+                        empresaData.put("confirmarPassword", confirmarPassword.trim());
 
                         database.child(uid).setValue(empresaData)
                                 .addOnSuccessListener(aVoid -> {

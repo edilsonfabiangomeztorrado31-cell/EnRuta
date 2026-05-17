@@ -9,8 +9,8 @@ public interface RegisterEmpresaContract {
     }
 
     interface Presenter {
-        void registrarEmpresa(String nombre, String nit, String correo, String representante,
-                              String tipoEmpresa, String dirreccion, String contacto, String contraseña);
+        void registrarEmpresa(String nombre, String nit, String personaContacto, String telefono,
+                              String correo, String password, String confirmarPassword);
 
         void onIniciarSesionClicked();
     }
