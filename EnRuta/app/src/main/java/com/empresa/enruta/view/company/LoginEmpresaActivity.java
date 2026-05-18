@@ -14,10 +14,8 @@ import com.empresa.enruta.presenter.company.LoginEmpresaPresenter;
 
 public class LoginEmpresaActivity extends AppCompatActivity implements LoginEmpresaContract.View {
 
-    private EditText etContraseña, etCorreo;
-    private Button btnIniciarSesion;
-    private Button btnRegistrarse;
-    private Button btnLoginConveyor;
+    private EditText etNI, etContraseña, etCorreo;
+    private Button btnLoginEmpresa;
     private LoginEmpresaContract.Presenter presenter;
 
     @Override
@@ -28,32 +26,9 @@ public class LoginEmpresaActivity extends AppCompatActivity implements LoginEmpr
         presenter = new LoginEmpresaPresenter(this);
 
         etCorreo = findViewById(R.id.etCorreo);
-        etContraseña = findViewById(R.id.etContrasena);
-        btnIniciarSesion = findViewById(R.id.btnIniciarSesionSwift);
-        btnRegistrarse = findViewById(R.id.btnRegistrarseSwift);
-        btnLoginConveyor = findViewById(R.id.btnLoginConveyor);
+        etContraseña = findViewById(R.id.etPassword);
+        btnLoginEmpresa = findViewById(R.id.btnLoginEmpresa);
 
-//        btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_azul_left);
-//        btnRegistrarse.setBackgroundResource(R.drawable.bg_button_naranja_right);
-//
-//        btnIniciarSesion.setOnClickListener(v -> {
-//            btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_azul_left);
-//            btnRegistrarse.setBackgroundResource(R.drawable.bg_button_naranja_right);
-//        });
-//
-//        btnRegistrarse.setOnClickListener(v -> {
-//            btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_naranja_left);
-//            btnRegistrarse.setBackgroundResource(R.drawable.bg_button_azul_right);
-//
-//            Intent intent = new Intent(LoginEmpresaActivity.this, RegisterEmpresaActivity.class);
-//            startActivity(intent); // <-- te faltaba este startActivity
-//        });
-//
-//        btnLoginConveyor.setOnClickListener(v -> {
-//            String correo = etCorreo.getText().toString().trim();
-//            String contraseña = etContraseña.getText().toString().trim();
-//            presenter.login(correo, contraseña);
-//        });
     }
 
     @Override
