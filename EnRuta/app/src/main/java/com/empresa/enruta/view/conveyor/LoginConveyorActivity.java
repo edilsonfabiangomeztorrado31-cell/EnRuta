@@ -15,8 +15,6 @@ import com.empresa.enruta.presenter.LoginEmpresaPresenter;
 public class LoginEmpresaActivity extends AppCompatActivity implements LoginEmpresaContract.View {
 
     private EditText etNI, etContraseña, etCorreo;
-    private Button btnIniciarSesion;
-    private Button btnRegistrarse;
     private Button btnLoginEmpresa;
     private LoginEmpresaContract.Presenter presenter;
 
@@ -31,8 +29,6 @@ public class LoginEmpresaActivity extends AppCompatActivity implements LoginEmpr
         etContraseña = findViewById(R.id.etPassword);
         btnLoginEmpresa = findViewById(R.id.btnLoginEmpresa);
 
-
-     
     }
 
     @Override
