@@ -14,7 +14,7 @@ public interface RegisterConveyorContract {
 
     interface Presenter {
         void registrarConveyor(String name, String apellido, String tipoDocumento, String numeroDocumento, String correo, String contacto,
-                               String placa, String capacidadToneladas, String tipoVehiculo, String contraseña);
+                               String placa, String capacidadToneladas, String tipoVehiculo, String password, String confirmarPassword);
 
         void onIniciarSesionClicked();
         void cargarOpcionesIniciales();

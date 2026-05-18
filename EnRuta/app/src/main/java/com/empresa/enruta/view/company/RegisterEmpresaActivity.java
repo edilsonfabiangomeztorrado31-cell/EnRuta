@@ -15,7 +15,7 @@ import com.empresa.enruta.presenter.company.RegisterEmpresaPresenter;
 
 public class RegisterEmpresaActivity extends AppCompatActivity implements RegisterEmpresaContract.View {
 
-    private EditText etNombre, etNit, etCorreo, etRepresentante, etTipoEmpresa, etDireccion, etContacto, etContraseña;
+    private EditText etNombre, etNit , etPersonContacto, etTelefono, etCorreo, etPassword, etConfirmPassword;
     private TextView tvRecuperar;
     private Button btnRegistrar;
     private RegisterEmpresaContract.Presenter presenter;
@@ -27,53 +27,29 @@ public class RegisterEmpresaActivity extends AppCompatActivity implements Regist
 
         presenter = new RegisterEmpresaPresenter(this);
 
-//        Button btnIniciarSesion = findViewById(R.id.btnIniciarSesionSwift);
-//        Button btnRegistrarse = findViewById(R.id.btnRegistrarseSwift);
-//
-//        btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_naranja_left);
-//        btnRegistrarse.setBackgroundResource(R.drawable.bg_button_azul_right);
-//
-//        btnIniciarSesion.setOnClickListener(v -> {
-//            btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_azul_left);
-//            btnRegistrarse.setBackgroundResource(R.drawable.bg_button_naranja_right);
-//
-//            Intent intent = new Intent(RegisterEmpresaActivity.this, LoginEmpresaActivity.class);
-//            startActivity(intent);
-//
-//        });
-//
-//        btnRegistrarse.setOnClickListener(v -> {
-//            btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_naranja_left);
-//            btnRegistrarse.setBackgroundResource(R.drawable.bg_button_azul_right);
-//
-//            Intent intent = new Intent(RegisterEmpresaActivity.this, RegisterEmpresaActivity.class);
-//        });
-
         etNombre = findViewById(R.id.etNombreEmpresa);
         etNit = findViewById(R.id.etNit);
-        etCorreo = findViewById(R.id.etCorreo);
-        etRepresentante = findViewById(R.id.etRepresentanteLlegal);
-        etTipoEmpresa = findViewById(R.id.etTipoEmpresa);
-        etDireccion = findViewById(R.id.etDireccion);
-        etContacto = findViewById(R.id.etContacto);
-        etContraseña = findViewById(R.id.etPassword);
-        tvRecuperar = findViewById(R.id.tvRecuperar);
+        etPersonContacto = findViewById(R.id.etPersonContacto);
+        etTelefono = findViewById(R.id.etTelefono);
+        etCorreo = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
+        etConfirmPassword = findViewById(R.id.etConfirmPassword);
+        //tvRecuperar = findViewById(R.id.tvRecuperar);
 
         btnRegistrar = findViewById(R.id.btnRegistrarseEmpresa);
         btnRegistrar.setOnClickListener(v -> {
             presenter.registrarEmpresa(
                     etNombre.getText().toString(),
                     etNit.getText().toString(),
+                    etPersonContacto.getText().toString(),
+                    etTelefono.getText().toString(),
                     etCorreo.getText().toString(),
-                    etRepresentante.getText().toString(),
-                    etTipoEmpresa.getText().toString(),
-                    etDireccion.getText().toString(),
-                    etContacto.getText().toString(),
-                    etContraseña.getText().toString()
+                    etPassword.getText().toString(),
+                    etConfirmPassword.getText().toString()
             );
         });
 
-        tvRecuperar.setOnClickListener(v -> presenter.onIniciarSesionClicked());
+        //tvRecuperar.setOnClickListener(v -> presenter.onIniciarSesionClicked());
 
     }
     @Override
