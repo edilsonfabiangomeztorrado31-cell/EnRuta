@@ -24,6 +24,10 @@
             android:theme="@style/Theme.EnRuta" />
         <activity
             android:name=".view.HomeEmpresaActivity"
+            android:exported="false"
+            android:theme="@style/Theme.EnRuta" />
+        <activity
+            android:name=".view.LoginEmpresaActivity"
             android:exported="true"
             android:label="">
             <intent-filter>
