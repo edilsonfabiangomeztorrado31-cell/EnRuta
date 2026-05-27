@@ -38,32 +38,6 @@ public class RegisterCoveyorActivity extends AppCompatActivity implements Regist
         etApellidos = findViewById(R.id.etApellidos);
         spTipoIdentificacion = findViewById(R.id.spTipoIdentificacion);
         etIdentificacion = findViewById(R.id.etIdentificacion);
-        Button btnIniciarSesion = findViewById(R.id.btnIniciarSesionSwift);
-        Button btnRegistrarse = findViewById(R.id.btnRegistrarseSwift);
-
-        btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_naranja_left);
-        btnRegistrarse.setBackgroundResource(R.drawable.bg_button_azul_right);
-
-        btnIniciarSesion.setOnClickListener(v -> {
-            btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_azul_left);
-            btnRegistrarse.setBackgroundResource(R.drawable.bg_button_naranja_right);
-
-            Intent intent = new Intent(RegisterCoveyorActivity.this, LoginConveyorActivity.class);
-            startActivity(intent);
-
-        });
-
-        btnRegistrarse.setOnClickListener(v -> {
-            btnIniciarSesion.setBackgroundResource(R.drawable.bg_button_naranja_left);
-            btnRegistrarse.setBackgroundResource(R.drawable.bg_button_azul_right);
-
-            Intent intent = new Intent(RegisterCoveyorActivity.this, RegisterCoveyorActivity.class);
-        });
-
-        etNombre = findViewById(R.id.etNombreConveyor);
-        etApellidos = findViewById(R.id.etApellido);
-        spTipoIdentificacion = findViewById(R.id.spinnerTipoDocumento);
-        etIdentificacion = findViewById(R.id.etNumDocumento);
         etCorreo = findViewById(R.id.etCorreo);
         etTelefono = findViewById(R.id.etTelefono);
         etPlaca = findViewById(R.id.etPlaca);

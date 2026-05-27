@@ -14,7 +14,7 @@ import com.empresa.enruta.presenter.company.LoginEmpresaPresenter;
 
 public class LoginEmpresaActivity extends AppCompatActivity implements LoginEmpresaContract.View {
 
-    private EditText etNI, etContraseña, etCorreo;
+    private EditText etContraseña, etCorreo;
     private Button btnLoginEmpresa;
     private LoginEmpresaContract.Presenter presenter;
 
@@ -29,6 +29,12 @@ public class LoginEmpresaActivity extends AppCompatActivity implements LoginEmpr
         etContraseña = findViewById(R.id.etPassword);
         btnLoginEmpresa = findViewById(R.id.btnLoginEmpresa);
 
+
+        btnLoginEmpresa.setOnClickListener(v -> {
+            String correo = etCorreo.getText().toString().trim();
+            String contraseña = etContraseña.getText().toString().trim();
+            presenter.login(correo, contraseña);
+        });
     }
 
     @Override

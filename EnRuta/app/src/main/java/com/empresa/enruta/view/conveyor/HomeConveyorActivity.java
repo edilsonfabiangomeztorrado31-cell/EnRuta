@@ -20,6 +20,7 @@ import com.empresa.enruta.model.freight.ConveyorModelImpl;
 import com.empresa.enruta.presenter.conveyor.ConveyorPresenter;
 import com.empresa.enruta.presenter.conveyor.HomeConveyorPresenter;
 import com.empresa.enruta.view.adapters.FreightAdapter;
+import com.empresa.enruta.view.company.LoginEmpresaActivity;
 import com.empresa.enruta.view.freight.DetalleFleteActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -60,7 +61,7 @@ public class HomeConveyorActivity extends ConveyorMenuView implements HomeConvey
             Log.d("DEBUG_UID", "Usuario autenticado: " + userId);
         } else {
             mostrarMensaje("No hay usuario autenticado. Redirigiendo al login.");
-            startActivity(new Intent(this, LoginConveyorActivity.class));
+            startActivity(new Intent(this, LoginEmpresaActivity.class));
             finish();
             return;
         }
