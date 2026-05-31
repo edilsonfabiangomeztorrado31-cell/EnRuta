@@ -1,107 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="4dp"
-    android:background="@android:color/white"
-    android:clickable="true"
-    android:foreground="?attr/selectableItemBackground">
+    android:layout_marginBottom="14dp"
+    android:orientation="vertical"
+    android:padding="18dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:text="Buenos Aires → Córdoba"
+        android:textColor="#002046"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
 
-        <!-- Información del flete -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Carga: Suministros Médicos"
+        android:textColor="#555"/>
 
-            <TextView
-                android:id="@+id/tvTituloFlete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Flete #12345"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="#111418" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Peso: 4.5 Tons"
+        android:textColor="#555"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="4dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precio: $450"
+        android:textStyle="bold"
+        android:textColor="#002046"/>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_location_on"
-                    android:contentDescription="Origen" />
-
-                <TextView
-                    android:id="@+id/tvOrigen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bogotá"
-                    android:textColor="#60758A"
-                    android:textSize="14sp"
-                    android:layout_marginStart="4dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="2dp">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_flag"
-                    android:contentDescription="Destino" />
-
-                <TextView
-                    android:id="@+id/tvDestino"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Medellín"
-                    android:textColor="#60758A"
-                    android:textSize="14sp"
-                    android:layout_marginStart="4dp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Precio -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-<!--            <ImageView-->
-<!--                android:layout_width="24dp"-->
-<!--                android:layout_height="24dp"-->
-<!--                android:src="@drawable/ic_attach_money"-->
-<!--                android:tint="#4CAF50"-->
-<!--                android:contentDescription="Precio" />-->
-
-            <TextView
-                android:id="@+id/tvPrecio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$500.000"
-                android:textColor="#111418"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginTop="2dp" />
-        </LinearLayout>
-
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+</LinearLayout>

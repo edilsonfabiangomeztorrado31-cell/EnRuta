@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_ubicacion"
+        android:icon="@drawable/ic_location"
+        android:title="Ubicación actual"/>
+
+    <item
+        android:id="@+id/nav_historial"
+        android:icon="@drawable/ic_history"
+        android:title="Historial de viajes"/>
+
+    <item
+        android:id="@+id/nav_notificaciones"
+        android:icon="@drawable/ic_notificaciones"
+        android:title="Notificaciones"/>
+
+    <item
+        android:id="@+id/nav_seguridad"
+        android:icon="@drawable/ic_seguridad"
+        android:title="Seguridad"/>
+
+    <item
+        android:id="@+id/nav_configuracion"
+        android:icon="@drawable/ic_configuracion"
+        android:title="Configuración"/>
+
+</menu>

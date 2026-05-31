@@ -99,7 +99,7 @@ public class RegisterFletesActivity extends CompanyMenuView implements RegisterF
         etPeso = findViewById(R.id.etPeso);
         etFechaRegistro = findViewById(R.id.etFechaRegistro);
 
-        btnRegistrar = findViewById(R.id.btnRegistrarFlete);
+        btnRegistrar = findViewById(R.id.btnGuardar);
 
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {

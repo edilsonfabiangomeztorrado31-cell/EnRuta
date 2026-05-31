@@ -43,9 +43,6 @@
             android:exported="false" />
         <activity
             android:name=".view.company.HomeCompanyActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.conveyor.LoginConveyorActivity"
             android:exported="true"
             android:label="">
             <intent-filter>

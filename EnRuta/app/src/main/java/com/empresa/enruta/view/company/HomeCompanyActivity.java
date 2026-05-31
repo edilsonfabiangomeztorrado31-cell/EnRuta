@@ -31,7 +31,7 @@ public class HomeCompanyActivity extends CompanyMenuView implements CompanyContr
         presenter = new CompanyPresenter(this, new CompanyModelImpl());
         presenter.obtenerEmpresas();
 
-        ImageButton btnAdd = findViewById(R.id.button_add);
+        Button btnAdd = findViewById(R.id.button_add);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override

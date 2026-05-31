@@ -1,65 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@android:drawable/edit_text"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@android:color/white">
 
+    <!-- TITULO -->
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Punto de recogida de la carga"
         android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:textSize="26sp"
+        android:textColor="#2C2C34"
+        android:layout_marginBottom="24dp"/>
 
+    <!-- CIUDAD -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Seleccione su ciudad"
-        android:layout_marginBottom="8dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="#2C2C34"
+        android:layout_marginBottom="10dp"/>
 
-    <EditText
+    <TextView
         android:id="@+id/tvCiudadDestino"
-        android:layout_marginBottom="16dp"
-        android:hint="Ejemplo: Cali"
-        android:padding="8dp"
-        android:background="@android:drawable/edit_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="none"
+        android:layout_height="56dp"
+        android:background="@android:drawable/edit_text"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:text="Ejemplo: Cali"
+        android:textColor="#A0A0A0"
+        android:textSize="18sp"
+        android:clickable="true"
         android:focusable="false"
-        android:cursorVisible="false"
-        android:clickable="true"/>
+        android:layout_marginBottom="24dp"/>
 
+    <!-- DIRECCION -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calle y número de la casa"
-        android:layout_marginBottom="8dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="#2C2C34"
+        android:layout_marginBottom="10dp"/>
 
-    <EditText
+    <TextView
         android:id="@+id/tvDireccionDestino"
-        android:layout_marginBottom="16dp"
-        android:hint="Ejemplo: Cra. 8 # 9-92"
-        android:padding="8dp"
-        android:background="@android:drawable/edit_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="none"
+        android:layout_height="56dp"
+        android:background="@android:drawable/edit_text"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:text="Ejemplo: Cra. 8 # 9-92"
+        android:textColor="#A0A0A0"
+        android:textSize="18sp"
+        android:clickable="true"
         android:focusable="false"
-        android:cursorVisible="false"
-        android:clickable="true"/>
+        android:layout_marginBottom="32dp"/>
 
+    <!-- BOTON -->
     <Button
         android:id="@+id/btnHechoDestino"
-        android:text="Hecho"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#D2F500"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        android:layout_height="58dp"
+        android:text="Hecho"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#D6FF00"/>
 
+</LinearLayout>

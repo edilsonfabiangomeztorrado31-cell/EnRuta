@@ -5,52 +5,72 @@
     android:id="@+id/drawer_layout_company"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:background="#F7F9FC">
 
-    <!-- Contenido principal -->
-    <RelativeLayout
+    <!-- CONTENIDO -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_empresa"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp">
 
-        <ImageView
-            android:id="@+id/imgMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/ic_menu" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imgLogo"
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/logo_app" />
+                <ImageView
+                    android:id="@+id/imgMenu"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_menu"/>
 
-        <!-- Aquí puedes usar FragmentContainerView si lo deseas -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FleteDirecto"
+                    android:textColor="#002046"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/imgProfile"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_circle"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                   />
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
         <FrameLayout
             android:id="@+id/fragment_container_company"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-    </RelativeLayout>
+    </LinearLayout>
 
-    <!-- Menú lateral -->
+    <!-- MENÚ -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/drawer_menu_company"
-        app:headerLayout="@layout/nav_header_company" />
+        android:background="#FFFFFF"
+        app:itemIconTint="#002046"
+        app:itemTextColor="#002046"
+        app:menu="@menu/menu_company"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
